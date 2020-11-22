@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent1= new Intent(MainActivity.this,ShowData.class);
             Bundle bundle= new Bundle();
             bundle.putString("user_email",user_email);
+
             intent1.putExtras(bundle);
             startActivity(intent1);
         }

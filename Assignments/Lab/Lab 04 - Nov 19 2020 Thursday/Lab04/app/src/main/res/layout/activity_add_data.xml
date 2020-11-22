@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addData">
+    <Button
+        android:onClick="Rice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rice"
+        />
+
+    <Button
+        android:onClick="Cake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cake"
+        />
+    <Button
+        android:onClick="BUtter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BUtter"
+        />
+    <Button
+        android:onClick="Cheese"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cheese"
+        />
+    <Button
+        android:onClick="Lemon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lemon"
+        />
+    <Button
+        android:onClick="Carrot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carrot"
+        />
+    <Button
+        android:onClick="ice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ice-creme"
+        />
+    <Button
+        android:onClick="Biscutit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Biscutit"
+        />
+
+
+
+
+
+
+
+</LinearLayout>
