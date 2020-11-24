@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+
+import static com.abirhossain.nsu.fall2020.cse486.sec01.lab04.MainActivity.TEXT_REQUEST;
 
 public class addData extends AppCompatActivity {
-String messi;
+    String rice ="Rice";
     public static final String EXTRA_REPLY =
             "com.example.android.twoactivities.extra.REPLY";
     @Override
@@ -15,20 +18,20 @@ String messi;
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_data);
+        Button Item1 = findViewById(R.id.Rice);
+        Item1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        messi="Messi";
+                Intent intent2 = new Intent();
+                intent2.putExtra("Rice",rice);
+                setResult(RESULT_OK,intent2 );
+                finish();
+            }
+        });
+
     }
 
-    public void Rice(View view) {
-        Intent intent2= new Intent(addData.this,MainActivity.class);
-        Bundle bundle= new Bundle();
-        bundle.putString("p1",messi);
-        intent2.putExtras(bundle);
-        setResult(RESULT_OK, intent2);
-        finish();
-
-
-    }
 
 
 
@@ -38,24 +41,5 @@ String messi;
 
 
 
-    public void Biscutit(View view) {
-    }
 
-    public void Cake(View view) {
-    }
-
-    public void BUtter(View view) {
-    }
-
-    public void Cheese(View view) {
-    }
-
-    public void Lemon(View view) {
-    }
-
-    public void Carrot(View view) {
-    }
-
-    public void ice(View view) {
-    }
 }

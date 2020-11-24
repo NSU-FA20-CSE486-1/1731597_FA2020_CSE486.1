@@ -1,15 +1,17 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.lab04;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
-    String p1;
+   
     public static final int TEXT_REQUEST = 1;
 
 
@@ -29,37 +31,38 @@ public class MainActivity extends AppCompatActivity {
         t10=(TextView)findViewById(R.id.text10);
 
 
+
+
     }
 
-    public void add(View view) {
+    public void  addItem()
 
-        Intent intent1= new Intent(MainActivity.this,addData.class);
-        startActivityForResult(intent1, TEXT_REQUEST);
+    {
+        Button addItem1 = findViewById(R.id.addItem);
+        addItem1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, addData.class);
+                startActivityForResult(intent1, TEXT_REQUEST);
+            }
+        });
+
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Test for the right intent reply.
-        if (requestCode == TEXT_REQUEST) {
-            // Test to make sure the intent reply result was good.
-            if (resultCode == RESULT_OK) {
-                //String reply = data.getStringExtra(addData.EXTRA_REPLY);
+        if (requestCode==TEXT_REQUEST){
+            if(resultCode==RESULT_OK){
+                String rice= data.getStringExtra("Rice");
+                t1.setText(rice);
 
-                // Make the reply head visible.
-//                t1.setVisibility(View.VISIBLE);
 
-                // Set the reply and make it visible.
-                //t1.setText(p1);
-                //t1.setVisibility(View.VISIBLE);
-
-                Bundle bundle = getIntent().getExtras();
-                String email = bundle.getString("p1");
-              //  mReplyTextView.setVisibility(View.VISIBLE);
-                t1.setText(email);
             }
+
         }
+
     }
-
-
 }
