@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
+    Button addItem1;
    
     public static final int TEXT_REQUEST = 1;
 
@@ -35,29 +36,52 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void  addItem()
 
-    {
-        Button addItem1 = findViewById(R.id.addItem);
-        addItem1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, addData.class);
-                startActivityForResult(intent1, TEXT_REQUEST);
-            }
-        });
+    public void add(View view) {
 
+        Intent intent = new Intent(MainActivity.this,addData.class);
+        startActivityForResult(intent,TEXT_REQUEST);
     }
+
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==TEXT_REQUEST){
-            if(resultCode==RESULT_OK){
-                String rice= data.getStringExtra("Rice");
-                t1.setText(rice);
+        if ( resultCode==RESULT_OK) {
+            if(requestCode==TEXT_REQUEST){
+                String result= data.getStringExtra("Res");
+               if(result.equals("Rice")){
+                t1.setText(result);
+               }
+               else if(result.equals("Cake")){
+                    t2.setText(result);
+                }
+               else if(result.equals("Butter")){
+                    t3.setText(result);
+                }
+               else if(result.equals("Cheese")){
+                    t4.setText(result);
+                }
+
+               else if(result.equals("Lemon")){
+                   t6.setText(result);
+               }
+               else if(result.equals("Carrot")){
+                   t7.setText(result);
+               }
+               else if(result.equals("Ice-cream")){
+                   t8.setText(result);
+               }
+               else if(result.equals("Biscuit")){
+                   t9.setText(result);
+               }
+
+
+
+
+
 
 
             }
@@ -65,4 +89,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

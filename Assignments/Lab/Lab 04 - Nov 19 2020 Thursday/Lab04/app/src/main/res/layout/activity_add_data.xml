@@ -6,12 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addData">
+    tools:context=".addData"
+    android:padding="10dp">
     <Button
         android:id="@+id/Rice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Rice"
+        android:onClick="addItem1"
         />
 
     <Button
@@ -19,43 +21,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cake"
+        android:onClick="addItem2"
         />
     <Button
         android:id="@+id/BUtter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BUtter"
+        android:onClick="addItem3"
         />
     <Button
         android:id="@+id/Cheese"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cheese"
+        android:onClick="addItem4"
         />
     <Button
         android:id="@+id/Lemon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lemon"
+        android:onClick="addItem5"
         />
     <Button
         android:id="@+id/Carrot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Carrot"
+        android:onClick="addItem6"
         />
     <Button
         android:id="@+id/ice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ice-creme"
+        android:onClick="addItem7"
         />
     <Button
         android:id="@+id/addItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Biscutit"
+        android:onClick="addItem8"
+
         />
+
+
 
 
 
