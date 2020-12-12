@@ -40,6 +40,31 @@
         android:layout_height="53dp"
         android:layout_gravity="center"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Time"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#F10000"
+        />
+
+    <Spinner
+        android:id="@+id/Hr"
+        android:layout_width="141dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+
+        />
+
+    <Spinner
+        android:id="@+id/Min"
+        android:layout_width="141dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+
+        />
+
 
 
 </LinearLayout>
