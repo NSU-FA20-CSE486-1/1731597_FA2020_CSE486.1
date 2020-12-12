@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="10dp"
     >
 
     <TextView
@@ -63,6 +64,19 @@
         android:layout_height="53dp"
         android:layout_gravity="center"
 
+        />
+    <Spinner
+        android:id="@+id/ampm"
+        android:layout_width="141dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+
+        />
+    <Button
+        android:onClick="btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="selected Date and Time"
         />
 
 
