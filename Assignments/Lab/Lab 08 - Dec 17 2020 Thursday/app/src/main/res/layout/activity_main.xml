@@ -6,24 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
+    android:background="#9BE88D"
     >
 
    <com.google.android.material.tabs.TabLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:id="@+id/tabl1"
-       android:background="@color/purple_500"
+       android:background="@color/teal_200"
        app:tabTextColor="@color/black"
        app:tabSelectedTextColor="@color/white"
-       app:tabIndicator="@color/white">
+       app:tabIndicatorColor="@color/white"
+
+       >
 
        <com.google.android.material.tabs.TabItem
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           
+           android:id="@+id/tab1"
+           android:text="Japan"
+
            />
 
+       <com.google.android.material.tabs.TabItem
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tab2"
+           android:text="Canada"
+
+           />
+       <com.google.android.material.tabs.TabItem
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tab3"
+           android:text="USA"
+
+           />
+       <com.google.android.material.tabs.TabItem
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tab4"
+           android:text="Spain"
+
+           />
+
+
    </com.google.android.material.tabs.TabLayout>
+
+    
 
 
 
