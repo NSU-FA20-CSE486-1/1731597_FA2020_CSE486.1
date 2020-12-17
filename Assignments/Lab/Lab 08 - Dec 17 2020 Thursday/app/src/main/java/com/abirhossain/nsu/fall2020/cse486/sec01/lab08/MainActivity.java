@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         TabItem3= findViewById(R.id.tab3);
         TabItem4= findViewById(R.id.tab4);
         viewPager = findViewById(R.id.vPager);
-        
+
 
     }
 }
