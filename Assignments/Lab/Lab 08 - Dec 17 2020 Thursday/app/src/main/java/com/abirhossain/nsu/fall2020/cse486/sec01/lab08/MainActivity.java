@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         TabItem2= findViewById(R.id.tab2);
         TabItem3= findViewById(R.id.tab3);
         TabItem4= findViewById(R.id.tab4);
+        viewPager = findViewById(R.id.vPager);
+        
 
     }
 }
