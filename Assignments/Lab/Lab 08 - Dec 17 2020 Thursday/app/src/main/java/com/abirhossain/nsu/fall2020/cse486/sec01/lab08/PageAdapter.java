@@ -21,11 +21,14 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
 
-            
-
+            case 0: return new tabFragment1();
+            case 1: return  new tabFragment2();
+            case 2: return new tabFragment3();
+            case 3: return  new tabFragment4();
+            default: return null;
 
         }
-        return null;
+
     }
 
     @Override
