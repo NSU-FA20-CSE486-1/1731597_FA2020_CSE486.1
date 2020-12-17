@@ -9,6 +9,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres, making it the world's second-largest country by total area. "
+        android:textSize="20sp"
+        android:background="#9BE88D"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
 
 </FrameLayout>

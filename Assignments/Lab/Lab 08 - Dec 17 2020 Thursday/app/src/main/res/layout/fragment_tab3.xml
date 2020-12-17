@@ -9,6 +9,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="The U.S. is a country of 50 states covering a vast swath of North America, with Alaska in the northwest and Hawaii extending the nation’s presence into the Pacific Ocean. Major Atlantic Coast cities are New York,
+a global finance and culture center, and capital Washington, DC. Midwestern metropolis Chicago is known for influential architecture and on the west coast, Los Angeles' Hollywood is famed for filmmaking"
+        android:textSize="20sp"
+        android:background="#9BE88D"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
 
 </FrameLayout>

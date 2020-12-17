@@ -11,6 +11,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     public PageAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
+        tabCount=behavior;
 
 
     }
@@ -20,7 +21,11 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
 
+            
+
+
         }
+        return null;
     }
 
     @Override
