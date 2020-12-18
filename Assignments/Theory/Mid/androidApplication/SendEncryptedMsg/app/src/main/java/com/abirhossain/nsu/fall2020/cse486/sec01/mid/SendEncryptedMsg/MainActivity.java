@@ -3,6 +3,7 @@ package com.abirhossain.nsu.fall2020.cse486.sec01.mid.SendEncryptedMsg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     EditText inputPhn, inputMsg, inputKey;
     Button encButton;
+    String outputString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +26,16 @@ public class MainActivity extends AppCompatActivity {
         encButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                outputString = encrypt(inputMsg.getText().toString(),inputKey.getText().toString());
+
             }
         });
 
+    }
+
+    private String encrypt(String encMsg, String encKey) {
+
+        
     }
 
 
