@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class MainActivity extends AppCompatActivity {
     EditText inputPhn, inputMsg, inputKey;
     Button encButton;
-    String outputString;
+    String outputString, AES="AES";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     private String encrypt(String encMsg, String encKey) throws Exception {
 
         SecretKeySpec Key =  generateKey(encKey);
+        Cipher cipher = Cipher.getInstance(AES);
+        cipher.init(Cipher.ENCRYPT_MODE,Key);
+        byte [] encVal = cipher.doFinal(encMsg.getBytes());
+        String encryptedValue= Base64.encodeToString(encVal,Base64.DEFAULT);
+        return encryptedValue;
 
 
     }
