@@ -9,6 +9,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.security.Key;
 import java.security.MessageDigest;
@@ -19,7 +20,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class MainActivity extends AppCompatActivity {
     EditText inputPhn, inputMsg, inputKey;
     Button encButton;
-    String outputString, AES="AES";
+    String outputString, AES="AES",encKey,phnNumb;
+    TextView test;
 
 
     @Override
@@ -31,19 +33,21 @@ public class MainActivity extends AppCompatActivity {
         inputMsg=findViewById(R.id.msg);
         inputKey=findViewById(R.id.key);
         encButton = findViewById(R.id.encBtn);
+        test = findViewById(R.id.test);
+
 
         encButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    outputString = encrypt(inputMsg.getText().toString(),inputKey.getText().toString());
 
-                    Bundle bundle1 = new Bundle();
-                    bundle1.putString("User_phn",inputPhn.toString());
-                    bundle1.putString("User_key",inputKey.toString());
-                    bundle1.putString("Enc_msg",outputString);
-                    Intent intent1= new Intent(MainActivity.this,EncryptedMsg.class);
-                    startActivity(intent1);
+                    outputString = encrypt(inputMsg.getText().toString(),inputKey.getText().toString());
+                    phnNumb= inputPhn.getText().toString();
+                    encKey =inputKey.getText().toString();
+                    test.setText(encKey);
+                   startNewActivity();
+
+
 
 
                 } catch (Exception e) {
@@ -52,6 +56,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void startNewActivity() {
+
+        Intent intent1= new Intent(MainActivity.this,EncryptedMsg.class);
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("User_phn",phnNumb);
+        bundle1.putString("User_key",encKey);
+        bundle1.putString("Enc_msg",outputString);
+        intent1.putExtras(bundle1);
+        startActivity(intent1);
 
     }
 

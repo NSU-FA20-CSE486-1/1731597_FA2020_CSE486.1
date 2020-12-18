@@ -13,6 +13,7 @@
         android:id="@+id/sPhnNumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
 
         />
     <TextView
@@ -20,12 +21,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textSize="20sp"
         />
     <TextView
         android:id="@+id/sKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textSize="20sp"
         />
     <Button
         android:id="@+id/sMsg"
