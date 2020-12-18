@@ -37,7 +37,7 @@ public class EncryptedMsg extends AppCompatActivity {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("smsto: "+sPhn);
+                Uri uri = Uri.parse("smsto: "+phnNumb);
                 Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                 intent.putExtra("sms_body", "Encrypted Message "+encMsg+ "Key: "+encKey);
                 startActivity(intent);
