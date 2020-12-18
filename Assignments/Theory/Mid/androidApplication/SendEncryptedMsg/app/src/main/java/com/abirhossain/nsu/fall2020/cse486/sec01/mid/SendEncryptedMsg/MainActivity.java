@@ -2,6 +2,7 @@ package com.abirhossain.nsu.fall2020.cse486.sec01.mid.SendEncryptedMsg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Base64;
@@ -36,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     outputString = encrypt(inputMsg.getText().toString(),inputKey.getText().toString());
+
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putString("User_phn",inputPhn.toString());
+                    bundle1.putString("User_key",inputKey.toString());
+                    bundle1.putString("Enc_msg",outputString);
+                    Intent intent1= new Intent(MainActivity.this,EncryptedMsg.class);
+                    startActivity(intent1);
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
