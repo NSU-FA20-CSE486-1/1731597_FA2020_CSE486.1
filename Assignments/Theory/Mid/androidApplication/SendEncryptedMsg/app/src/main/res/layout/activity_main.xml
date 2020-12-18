@@ -38,6 +38,7 @@
         android:layout_gravity="center"
         android:text="Encrypt"
         android:layout_marginTop="10dp"
+
         />
 
 </LinearLayout>
