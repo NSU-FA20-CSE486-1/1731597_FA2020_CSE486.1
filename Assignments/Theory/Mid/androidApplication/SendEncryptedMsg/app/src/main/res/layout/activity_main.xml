@@ -21,7 +21,7 @@
         android:id="@+id/msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Your msg (Maximum 160 words)"
+        android:hint="Enter Your msg (Maximum 150 words)"
         android:layout_marginTop="10dp"
 
         />
