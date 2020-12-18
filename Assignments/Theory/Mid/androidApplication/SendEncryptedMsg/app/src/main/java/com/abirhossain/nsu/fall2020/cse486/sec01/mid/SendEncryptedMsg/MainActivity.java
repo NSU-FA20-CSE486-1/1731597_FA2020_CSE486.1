@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     EditText inputPhn, inputMsg, inputKey;
     Button encButton;
     String outputString, AES="AES",encKey,phnNumb;
-    TextView test;
+
 
 
     @Override
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         inputMsg=findViewById(R.id.msg);
         inputKey=findViewById(R.id.key);
         encButton = findViewById(R.id.encBtn);
-        test = findViewById(R.id.test);
+
 
 
         encButton.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                     outputString = encrypt(inputMsg.getText().toString(),inputKey.getText().toString());
                     phnNumb= inputPhn.getText().toString();
                     encKey =inputKey.getText().toString();
-                    test.setText(encKey);
                    startNewActivity();
 
 
