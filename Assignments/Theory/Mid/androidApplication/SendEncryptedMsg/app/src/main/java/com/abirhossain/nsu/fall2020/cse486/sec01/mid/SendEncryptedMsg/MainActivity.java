@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     outputString = encrypt(inputMsg.getText().toString(),inputKey.getText().toString());
                     phnNumb= inputPhn.getText().toString();
                     encKey =inputKey.getText().toString();
-                   startNewActivity();
+                    startNewActivity();
 
 
 
