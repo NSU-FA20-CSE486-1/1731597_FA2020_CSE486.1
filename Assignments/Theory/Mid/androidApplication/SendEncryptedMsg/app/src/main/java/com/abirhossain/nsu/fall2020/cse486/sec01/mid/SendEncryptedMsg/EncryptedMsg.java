@@ -18,6 +18,7 @@ public class EncryptedMsg extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_encrypted_msg);
         sPhn=findViewById(R.id.sPhnNumb);
         EncMsg = findViewById(R.id.sEncMsg);
