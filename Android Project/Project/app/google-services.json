@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "491002290071",
+    "project_id": "home-eatery",
+    "storage_bucket": "home-eatery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491002290071:android:00dc378b5e47c0fcb8eed2",
+        "android_client_info": {
+          "package_name": "com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491002290071-bt1t3d970n5knm6i4v5n0o7sb58hp1t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx1nr1PCj27qxNcgcJPktcRAIVJPOxIQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491002290071-bt1t3d970n5knm6i4v5n0o7sb58hp1t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
