@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/greenish"
+    android:padding="15dp"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/logInHeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+
+        android:gravity="center"
+        android:textColor="#FFFCFC"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        />
+    <EditText
+        android:id="@+id/EmailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/logInHeaderText"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:hint="Enter Your Phone Number"
+        />
+    <EditText
+        android:id="@+id/PassET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/EmailET"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:inputType="textPassword"
+        android:hint="Enter Your Password"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/EnterAdminPanel"
+        android:layout_marginTop="10dp"
+        android:text="Forgot Password ?"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/PassET"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        />
+
+
+
+
+</RelativeLayout>
