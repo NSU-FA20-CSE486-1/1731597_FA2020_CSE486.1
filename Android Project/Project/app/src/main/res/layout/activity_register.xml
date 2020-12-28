@@ -1,9 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@color/greenish"
+    android:padding="15dp"
+    >
+    <ImageView
+        android:id="@+id/ReturnLoginReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:textStyle="bold"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+    <ImageView
+        android:id="@+id/LocationDetect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_gps_fixed_24"
+        android:textStyle="bold"
+
+        />
+    <TextView
+        android:id="@+id/SignUpHeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
+
+        />
+    <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+        android:id="@+id/userImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/SignUpHeaderText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_person_24"
+
+        />
+    <EditText
+        android:id="@+id/SignUp_UserName_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
+        android:layout_below="@+id/userImage"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:hint="Enter Your Name"
+        />
+    <EditText
+        android:id="@+id/SignUp_phone_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="phone"
+        android:layout_below="@+id/SignUp_UserName_input"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:hint="Enter Your Phone Number"
+        />
+    <EditText
+        android:id="@+id/signUp_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/SignUp_phone_number_input"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:inputType="textPassword"
+        android:hint="Enter Your Password"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/AddressLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/signUp_password_input"
+        android:layout_marginTop="20dp"
+
+        >
+
+        <EditText
+            android:id="@+id/countryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:hint="Country"
+            />
+        <EditText
+            android:id="@+id/StateET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:hint="State"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            />
+        <EditText
+            android:id="@+id/CityET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:hint="City"
+            />
+
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/CompleteAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress|textMultiLine"
+        android:layout_below="@id/AddressLL"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:hint="Complete Address"
+        />
+    <Button
+        android:id="@+id/RegisterBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CompleteAddress"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:text="Register"
+        />
+    <TextView
+        android:id="@+id/SellerTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register As A Vendor"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        />
+
+
+
+
+
+</RelativeLayout>
