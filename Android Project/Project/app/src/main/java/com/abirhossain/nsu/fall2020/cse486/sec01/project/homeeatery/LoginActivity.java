@@ -2,7 +2,9 @@ package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +24,20 @@ public class LoginActivity extends AppCompatActivity {
         forgotTV = findViewById(R.id.ForgotTv);
         loginBtn = findViewById(R.id.LoginBtn);
         noAccount = findViewById(R.id.NoAccount);
+
+        noAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
+        forgotTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
+            }
+        });
+
 
     }
 }
