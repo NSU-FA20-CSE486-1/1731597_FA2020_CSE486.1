@@ -1,8 +1,14 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +24,9 @@ public class RegisterSeller extends AppCompatActivity {
     private TextView sellerTv;
 
     //permission
+    private static final int LOCATION_REQUEST_CODE = 100;
+    //array permission
+    private String[] locationPermission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,10 @@ public class RegisterSeller extends AppCompatActivity {
         sellerTv = findViewById(R.id.SellerSellerTv);
         feeET = findViewById(R.id.SellerSignUp_fee_input);
         shopNameET = findViewById(R.id.SellerSignUp_Shop_Name_input);
+
+        //permission array initializing
+        locationPermission = new String[] {Manifest.permission.ACCESS_FINE_LOCATION};
+
 
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,5 +82,40 @@ public class RegisterSeller extends AppCompatActivity {
         });
 
 
+    }
+
+    private boolean checkLocationPermission(){
+
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)== (PackageManager.PERMISSION_GRANTED);
+        return result;
+
+    }
+
+    private void requestLocationPermission(){
+        ActivityCompat.requestPermissions(this,locationPermission,LOCATION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode){
+            case LOCATION_REQUEST_CODE:{
+                if (grantResults.length>0){
+                    boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    if (locationAccepted){
+                        //location permission granted
+
+                    }
+                    else {
+                        //location permission denied
+
+                    }
+                }
+            }
+            break;
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
