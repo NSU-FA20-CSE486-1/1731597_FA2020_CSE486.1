@@ -2,7 +2,9 @@ package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,6 +16,8 @@ public class RegisterSeller extends AppCompatActivity {
     private EditText nameET,phnET,passET,emailET,countryET,stateET,cityET,cAddressET,feeET,shopNameET;
     private Button regBtn;
     private TextView sellerTv;
+
+    //permission
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,35 @@ public class RegisterSeller extends AppCompatActivity {
         sellerTv = findViewById(R.id.SellerSellerTv);
         feeET = findViewById(R.id.SellerSignUp_fee_input);
         shopNameET = findViewById(R.id.SellerSignUp_Shop_Name_input);
+
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        gpsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // current location detection
+            }
+        });
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //selecting image
+            }
+        });
+        regBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //registration process
+            }
+        });
+
 
     }
 }
