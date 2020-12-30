@@ -361,5 +361,19 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode== RESULT_OK){
+            if(requestCode == IMAGE_PICK_GALLERY_CODE){
+                image_uri = data.getData();
+                profileImage.setImageURI(image_uri);
 
+            }
+            else if (requestCode == IMAGE_PICK_GALLERY_CODE){
+                profileImage.setImageURI(image_uri);
+
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
