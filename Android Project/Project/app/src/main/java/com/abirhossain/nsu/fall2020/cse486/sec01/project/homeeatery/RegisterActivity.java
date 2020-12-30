@@ -71,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Seller Registration activity open
                 
+
             }
         });
 
