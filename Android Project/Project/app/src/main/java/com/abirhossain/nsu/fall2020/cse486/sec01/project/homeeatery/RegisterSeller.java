@@ -20,21 +20,21 @@ public class RegisterSeller extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_seller);
 
-        backBtn= findViewById(R.id.ReturnReg);
-        gpsBtn = findViewById(R.id.LocationDetect);
-        profileImage = findViewById(R.id.userImage);
-        nameET = findViewById(R.id.SignUp_UserName_input);
-        phnET = findViewById(R.id.SignUp_phone_number_input);
-        passET = findViewById(R.id.signUp_password_input);
-        emailET = findViewById(R.id.SignUp_email_input);
-        countryET = findViewById(R.id.countryET);
-        stateET = findViewById(R.id.stateET);
-        cityET = findViewById(R.id.cityET);
-        cAddressET = findViewById(R.id.CompleteAddress);
-        regBtn= findViewById(R.id.RegisterBtn);
-        sellerTv = findViewById(R.id.SellerTv);
-        feeET = findViewById(R.id.SignUp_fee_input);
-        shopNameET = findViewById(R.id.SignUp_Shop_Name_input);
+        backBtn= findViewById(R.id.ReturnSellerReg);
+        gpsBtn = findViewById(R.id.SellerLocationDetect);
+        profileImage = findViewById(R.id.SelleruserImage);
+        nameET = findViewById(R.id.SellerSignUp_UserName_input);
+        phnET = findViewById(R.id.SellerSignUp_phone_number_input);
+        passET = findViewById(R.id.SellersignUp_password_input);
+        emailET = findViewById(R.id.SellerSignUp_email_input);
+        countryET = findViewById(R.id.SellercountryET);
+        stateET = findViewById(R.id.SellerstateET);
+        cityET = findViewById(R.id.SellercityET);
+        cAddressET = findViewById(R.id.SellerCompleteAddress);
+        regBtn= findViewById(R.id.SellerRegisterBtn);
+        sellerTv = findViewById(R.id.SellerSellerTv);
+        feeET = findViewById(R.id.SellerSignUp_fee_input);
+        shopNameET = findViewById(R.id.SellerSignUp_Shop_Name_input);
 
     }
 }
