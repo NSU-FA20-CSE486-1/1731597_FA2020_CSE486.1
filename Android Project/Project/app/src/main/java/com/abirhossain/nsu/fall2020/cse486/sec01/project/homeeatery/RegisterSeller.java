@@ -9,14 +9,17 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class RegisterSeller extends AppCompatActivity {
+public class RegisterSeller extends AppCompatActivity implements LocationListener {
 
     private ImageView backBtn,gpsBtn,profileImage;
     private EditText nameET,phnET,passET,emailET,countryET,stateET,cityET,cAddressET,feeET,shopNameET;
@@ -65,6 +68,15 @@ public class RegisterSeller extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // current location detection
+                if (checkLocationPermission()){
+                    //allowed
+                    detectLocation();
+                }
+                else {
+                    //disallowed
+                    requestLocationPermission();
+                }
+
             }
         });
 
@@ -84,6 +96,10 @@ public class RegisterSeller extends AppCompatActivity {
 
     }
 
+    private void detectLocation() {
+
+    }
+
     private boolean checkLocationPermission(){
 
         boolean result = ContextCompat.checkSelfPermission(this,
@@ -97,6 +113,28 @@ public class RegisterSeller extends AppCompatActivity {
     }
 
     @Override
+    public void onLocationChanged(@NonNull Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
+    }
+
+
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         switch (requestCode){
@@ -106,9 +144,12 @@ public class RegisterSeller extends AppCompatActivity {
                     if (locationAccepted){
                         //location permission granted
 
+                        detectLocation();
+
                     }
                     else {
                         //location permission denied
+                        Toast.makeText(RegisterSeller.this, "Permission not granted", Toast.LENGTH_SHORT).show();
 
                     }
                 }
@@ -118,4 +159,7 @@ public class RegisterSeller extends AppCompatActivity {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+
+
 }
