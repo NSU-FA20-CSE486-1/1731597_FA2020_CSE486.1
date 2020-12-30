@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,6 +23,8 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,9 +32,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
+
 import java.security.Permission;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class RegisterSeller extends AppCompatActivity implements LocationListener {
 
@@ -39,7 +47,7 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
     private EditText nameET,phnET,passET,emailET,countryET,stateET,cityET,cAddressET,feeET,shopNameET;
     private Button regBtn;
     private TextView sellerTv;
-    private double latitude,longitude;
+    private double latitude=0.0,longitude=0.0;
 
     //permission
     private static final int LOCATION_REQUEST_CODE = 100;
@@ -57,6 +65,10 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
     private Uri image_uri;
 
     private LocationManager locationManager;
+
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +95,14 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
         locationPermission = new String[] {Manifest.permission.ACCESS_FINE_LOCATION};
         cameraPermission = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+
+        firebaseAuth= FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please wait for a moment");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+
 
 
 
@@ -122,8 +142,58 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
             @Override
             public void onClick(View v) {
                 //registration process
+                inputData();
             }
         });
+
+
+    }
+
+    private  String fullName,shopName, phoneNumber,deliveryFee,country,state,city,address,email,password;
+
+    private void inputData() {
+
+        fullName= nameET.getText().toString();
+        shopName = shopNameET.getText().toString();
+        phoneNumber = phnET.getText().toString();
+        deliveryFee = feeET.getText().toString();
+        country = countryET.getText().toString();
+        state = stateET.getText().toString();
+        city = cityET.getText().toString();
+        address = cAddressET.getText().toString();
+        email = emailET.getText().toString();
+        password = passET.getText().toString();
+
+        if(TextUtils.isEmpty(fullName)){
+            Toast.makeText(RegisterSeller.this, "Information required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(shopName)){
+            Toast.makeText(RegisterSeller.this, "shopName required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(phoneNumber)){
+            Toast.makeText(RegisterSeller.this, "phoneNumber required", Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(deliveryFee)){
+            Toast.makeText(RegisterSeller.this, "deliveryFee required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(RegisterSeller.this, "Enter right email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(RegisterSeller.this, "password required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(latitude== 0.0 || longitude == 0.0){
+            Toast.makeText(RegisterSeller.this, "click gps button", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        
 
 
     }
