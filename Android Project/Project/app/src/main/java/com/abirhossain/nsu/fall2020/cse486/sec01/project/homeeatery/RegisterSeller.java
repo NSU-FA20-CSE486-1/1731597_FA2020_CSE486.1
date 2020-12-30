@@ -1,20 +1,27 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Camera;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.Permission;
 import java.util.List;
 import java.util.Locale;
 
@@ -35,13 +43,18 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
     //permission
     private static final int LOCATION_REQUEST_CODE = 100;
-    private static final int LOCATION_CAMERA_CODE = 200;
-    private static final int LOCATION_STORAGE_CODE = 200;
+    private static final int CAMERA_REQUEST_CODE = 200;
+    private static final int STORAGE_REQUEST_CODE = 300;
+    //Constant for picking image
+    private static final int IMAGE_PICK_GALLERY_CODE = 400;
+    private static final int IMAGE_PICK_CAMERA_CODE = 500;
+
     //array permission
     private String[] locationPermission;
     private String[] cameraPermission;
     private String[] storagePermission;
     //uri to pick image
+    private Uri image_uri;
 
     private LocationManager locationManager;
 
@@ -68,6 +81,8 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
         //permission array initializing
         locationPermission = new String[] {Manifest.permission.ACCESS_FINE_LOCATION};
+        cameraPermission = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermission = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 
 
@@ -99,6 +114,8 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
             @Override
             public void onClick(View v) {
                 //selecting image
+
+                showImagePickDialog();
             }
         });
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +127,74 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
 
     }
+
+    private void showImagePickDialog() {
+
+        String[] options =  {"Camera","Gallery"};
+        //building a dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Chose Image")
+                .setItems(options, new DialogInterface.OnClickListener() {
+                    //handling user choices
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if (which==0){
+                            //user chose camera
+                            if (checkCameraPermission()){
+                                //camera permission was allowed
+                                pickFromCamera();
+
+                            }
+                            else {
+                                //camera permission denied
+                                requestCameraPermission();
+
+                            }
+                        }
+                        else{
+                            //user chose gallery
+                            if (checkStoragePermission()){
+                                //Storage permission was allowed
+                                pickFromGallery();
+
+
+                            }
+                            else {
+                                //Storage permission was denied
+                                requestStoragePermission();
+
+                            }
+                        }
+
+                    }
+                })
+                .show();
+    }
+
+    private void pickFromGallery(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_PICK_GALLERY_CODE);
+
+    }
+    private void pickFromCamera(){
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.Images.Media.TITLE,"Temp_image Title");
+        contentValues.put(MediaStore.Images.Media.DESCRIPTION,"Temp_image Description");
+
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,image_uri);
+        startActivityForResult(intent,IMAGE_PICK_CAMERA_CODE);
+
+
+
+    }
+
+
 
     private void detectLocation() {
         Toast.makeText(RegisterSeller.this, "Checking location.. ", Toast.LENGTH_LONG).show();
@@ -128,6 +213,31 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
     private void requestLocationPermission(){
         ActivityCompat.requestPermissions(this,locationPermission,LOCATION_REQUEST_CODE);
+    }
+
+    private boolean checkStoragePermission(){
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                (PackageManager.PERMISSION_GRANTED);
+         return result;
+    }
+
+    private void requestStoragePermission(){
+        ActivityCompat.requestPermissions(this,storagePermission,STORAGE_REQUEST_CODE);
+
+    }
+    private boolean checkCameraPermission(){
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)==
+                (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                (PackageManager.PERMISSION_GRANTED);
+        return result && result1;
+    }
+    private void requestCameraPermission(){
+        ActivityCompat.requestPermissions(this,cameraPermission,CAMERA_REQUEST_CODE);
+
     }
 
     @Override
@@ -210,11 +320,46 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
                 }
             }
             break;
+            case CAMERA_REQUEST_CODE:{
+                if (grantResults.length>0){
+                    boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (cameraAccepted && storageAccepted){
+                        //location permission granted
+                        pickFromCamera();
+
+
+                    }
+                    else {
+                        //location permission denied
+                        Toast.makeText(RegisterSeller.this, "Permission not granted", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+            break;
+            case STORAGE_REQUEST_CODE:{
+                if (grantResults.length>0){
+
+                    boolean storageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    if (storageAccepted){
+                        //location permission granted
+                       pickFromGallery();
+
+
+                    }
+                    else {
+                        //location permission denied
+                        Toast.makeText(RegisterSeller.this, "Permission not granted", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+            break;
         }
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
 
 
 }
