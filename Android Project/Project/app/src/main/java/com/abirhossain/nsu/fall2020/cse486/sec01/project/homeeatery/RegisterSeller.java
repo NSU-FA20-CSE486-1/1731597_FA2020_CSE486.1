@@ -275,6 +275,7 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressDialog.dismiss();
+                    startActivity(new Intent(RegisterSeller.this,MainSellerActivity.class));
                     finish();
 
                 }
@@ -331,6 +332,7 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
                                                 progressDialog.dismiss();
+                                                startActivity(new Intent(RegisterSeller.this,MainSellerActivity.class));
                                                 finish();
 
                                             }
