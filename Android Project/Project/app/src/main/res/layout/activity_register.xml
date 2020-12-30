@@ -33,10 +33,11 @@
         android:id="@+id/SignUpHeaderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
+        android:text="User Sign UP"
+        android:textAllCaps="true"
         android:gravity="center"
         android:textColor="#FFFFFF"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold"
 
         />
