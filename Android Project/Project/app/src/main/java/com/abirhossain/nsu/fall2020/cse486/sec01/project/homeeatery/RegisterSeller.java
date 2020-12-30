@@ -34,10 +34,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.w3c.dom.Text;
 
@@ -275,9 +279,73 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
                 }
             });
+        }
 
+        else{
+            //name and path of image
+            String filePathAndName= "profile_images/"+""+firebaseAuth.getUid();
+            //Uploading image
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
+            storageReference.putFile(image_uri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            //getting url of uploaded image
+                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uriTask.isSuccessful());
 
+                            Uri downloadImageUri = uriTask.getResult();
+                            if(uriTask.isSuccessful()){
+                                HashMap<String,Object> hashMap = new HashMap<>();
+                                hashMap.put("uid",""+firebaseAuth.getUid());
+                                hashMap.put("email",""+email);
+                                hashMap.put("name",""+fullName);
+                                hashMap.put("shopName",""+shopName);
+                                hashMap.put("phone",""+phoneNumber);
+                                hashMap.put("deliveryFee",""+deliveryFee);
+                                hashMap.put("country",""+country);
+                                hashMap.put("state",""+state);
+                                hashMap.put("city",""+city);
+                                hashMap.put("address",""+address);
+                                hashMap.put("latitude",""+latitude);
+                                hashMap.put("longitude",""+longitude);
+                                hashMap.put("timestamp",""+timestamp);
+                                hashMap.put("accountType","Seller");
+                                hashMap.put("online","true");
+                                hashMap.put("shopOpen","true");
+                                hashMap.put("profileImage",""+downloadImageUri);
 
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+                                ref.child(firebaseAuth.getUid()).setValue(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //db update
+                                                progressDialog.dismiss();
+                                                startActivity(new Intent(RegisterSeller.this,MainSellerActivity.class));
+                                                finish();
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                progressDialog.dismiss();
+                                                finish();
+
+                                            }
+                                        });
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegisterSeller.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
         }
     }
 
