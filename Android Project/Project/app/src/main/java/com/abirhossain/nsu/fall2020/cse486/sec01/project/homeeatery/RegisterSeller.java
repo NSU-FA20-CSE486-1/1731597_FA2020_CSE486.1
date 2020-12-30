@@ -9,8 +9,11 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,17 +22,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+import java.util.Locale;
+
 public class RegisterSeller extends AppCompatActivity implements LocationListener {
 
     private ImageView backBtn,gpsBtn,profileImage;
     private EditText nameET,phnET,passET,emailET,countryET,stateET,cityET,cAddressET,feeET,shopNameET;
     private Button regBtn;
     private TextView sellerTv;
+    private double latitude,longitude;
 
     //permission
     private static final int LOCATION_REQUEST_CODE = 100;
+    private static final int LOCATION_CAMERA_CODE = 200;
+    private static final int LOCATION_STORAGE_CODE = 200;
     //array permission
     private String[] locationPermission;
+    private String[] cameraPermission;
+    private String[] storagePermission;
+    //uri to pick image
+
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +68,7 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
         //permission array initializing
         locationPermission = new String[] {Manifest.permission.ACCESS_FINE_LOCATION};
+
 
 
 
@@ -97,6 +112,9 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
     }
 
     private void detectLocation() {
+        Toast.makeText(RegisterSeller.this, "Checking location.. ", Toast.LENGTH_LONG).show();
+        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
 
     }
 
@@ -114,6 +132,42 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        // detected location
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        findAddress();
+    }
+
+    private void findAddress() {
+
+        Geocoder geocoder;
+        List<Address> addresses;
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+
+            addresses = geocoder.getFromLocation(latitude,longitude,1);
+            // full address in address string
+            String address = addresses.get(0).getAddressLine(0);
+            String city= addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            // setting the address in the signup activity
+            countryET.setText(country);
+            stateET.setText(state);
+            cityET.setText(city);
+            cAddressET.setText(address);
+
+
+
+
+
+        }
+        catch (Exception e){
+            Toast.makeText(RegisterSeller.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -129,6 +183,7 @@ public class RegisterSeller extends AppCompatActivity implements LocationListene
 
     @Override
     public void onProviderDisabled(@NonNull String provider) {
+        Toast.makeText(RegisterSeller.this, "Please turn on your gps.. ", Toast.LENGTH_LONG).show();
 
     }
 
