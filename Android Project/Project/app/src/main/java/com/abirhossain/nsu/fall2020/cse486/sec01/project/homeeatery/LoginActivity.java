@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
 
                         progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
