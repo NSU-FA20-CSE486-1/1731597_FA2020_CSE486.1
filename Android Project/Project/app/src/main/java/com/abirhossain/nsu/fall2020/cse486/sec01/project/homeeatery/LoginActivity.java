@@ -1,19 +1,33 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailET,passET;
     private TextView forgotTV, noAccount;
     private Button loginBtn;
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
+    private String email,password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         forgotTV = findViewById(R.id.ForgotTv);
         loginBtn = findViewById(R.id.LoginBtn);
         noAccount = findViewById(R.id.NoAccount);
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please Wait..");
+        progressDialog.setCanceledOnTouchOutside(false);
+
 
         noAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +68,44 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
+        email = emailET.getText().toString();
+        password= passET.getText().toString();
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(LoginActivity.this, "Wrong Email..", Toast.LENGTH_SHORT).show();
+        }
+        if (TextUtils.isEmpty(password)){
+            Toast.makeText(LoginActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
 
-        
+        }
+
+        progressDialog.setMessage("Logging in..");
+        progressDialog.show();
+
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        //logged in successfully
+                        makeMeOnline();
+
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+
+    }
+
+    private void makeMeOnline() {
+        progressDialog.setMessage("");
     }
 }
