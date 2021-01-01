@@ -19,8 +19,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -120,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // update successful
+                        UserType();
 
                     }
 
@@ -133,6 +137,42 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
+
+    }
+
+    private void UserType() {
+        //user is vendor or client
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            String accountType=""+ds.child("accountType").getValue();
+                            if(accountType.equals("Seller")){
+                                progressDialog.dismiss();
+                                //redirect to seller activity
+                                Intent intent = new Intent(LoginActivity.this,MainSellerActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                progressDialog.dismiss();
+                                //redirect to client activity
+                                Intent intent = new Intent(LoginActivity.this,MainUserActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
     }
 }
