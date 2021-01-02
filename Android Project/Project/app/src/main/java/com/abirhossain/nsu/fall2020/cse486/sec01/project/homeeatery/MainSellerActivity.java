@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,14 @@ public class MainSellerActivity extends AppCompatActivity {
         logOutBtn = findViewById(R.id.Seller_logout_btn);
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
+
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                checkVendor();
+            }
+        });
 
     }
 
