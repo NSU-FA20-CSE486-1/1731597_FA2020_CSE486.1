@@ -65,12 +65,17 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
+                        progressDialog.dismiss();
+                        Toast.makeText(ForgotPasswordActivity.this, "Follow the sent instruction", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        //failed rest
+                        progressDialog.dismiss();
+                        Toast.makeText(ForgotPasswordActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
 
                     }
                 });
