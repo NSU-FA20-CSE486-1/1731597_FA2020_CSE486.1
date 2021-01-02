@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +32,13 @@ public class MainUserActivity extends AppCompatActivity {
         logOutBtn = findViewById(R.id.Client_logout_btn);
         firebaseAuth = FirebaseAuth.getInstance();
         checkClient();
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                checkClient();
+            }
+        });
 
         
     }
