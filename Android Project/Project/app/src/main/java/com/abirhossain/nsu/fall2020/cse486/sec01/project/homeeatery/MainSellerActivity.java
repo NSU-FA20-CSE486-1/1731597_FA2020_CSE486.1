@@ -86,6 +86,7 @@ public class MainSellerActivity extends AppCompatActivity {
                                 Picasso.get().load(profileImage).placeholder(R.drawable.ic_baseline_person_24).into(sellerImage);
                             }
                             catch (Exception e){
+                                sellerImage.setImageResource(R.drawable.ic_baseline_person_24);
 
                             }
                         }
