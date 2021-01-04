@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class MainSellerActivity extends AppCompatActivity {
     private TextView vendorName,ShopNameTV,ShopEmailTV;
@@ -81,6 +82,12 @@ public class MainSellerActivity extends AppCompatActivity {
                             vendorName.setText(name+"("+accountType+")");
                             ShopNameTV.setText(shopName);
                             ShopEmailTV.setText(email);
+                            try {
+                                Picasso.get().load(profileImage).placeholder(R.drawable.ic_baseline_person_24).into(sellerImage);
+                            }
+                            catch (Exception e){
+
+                            }
                         }
 
                     }
