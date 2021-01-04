@@ -18,16 +18,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainSellerActivity extends AppCompatActivity {
-    private TextView vendorName;
-    private ImageView logOutBtn;
+    private TextView vendorName,ShopNameTV,ShopEmailTV;
+    private ImageView logOutBtn, AddProductBtn,sellerImage;
     private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_seller);
-        vendorName = findViewById(R.id.SellerName);
+        vendorName = findViewById(R.id.SellerNameTV);
         logOutBtn = findViewById(R.id.Seller_logout_btn);
+        AddProductBtn = findViewById(R.id.Seller_add_btn);
+        sellerImage = findViewById(R.id.seller_image);
+        ShopNameTV = findViewById(R.id.ShopNameTV);
+        ShopEmailTV = findViewById(R.id.ShopEmailTV);
+
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
 
