@@ -19,6 +19,7 @@
         android:textStyle="bold"
 
         />
+
     <TextView
         android:id="@+id/SellerName"
         android:layout_width="match_parent"
@@ -28,7 +29,6 @@
         android:textColor="#000000"
         android:textSize="35sp"
         android:textStyle="bold"
-
         />
 
 </RelativeLayout>
