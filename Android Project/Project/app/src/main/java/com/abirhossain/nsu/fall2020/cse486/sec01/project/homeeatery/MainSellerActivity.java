@@ -44,6 +44,14 @@ public class MainSellerActivity extends AppCompatActivity {
             }
         });
 
+        AddProductBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //open add product activity
+                
+            }
+        });
+
     }
 
     private void checkVendor() {
