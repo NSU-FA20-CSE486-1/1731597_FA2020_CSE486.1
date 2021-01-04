@@ -48,7 +48,7 @@ public class MainSellerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //open add product activity
-                
+                startActivity(new Intent(MainSellerActivity.this,AddProductActivity.class));
             }
         });
 
@@ -75,7 +75,12 @@ public class MainSellerActivity extends AppCompatActivity {
                         for (DataSnapshot ds: snapshot.getChildren()){
                             String name = ""+ds.child("name").getValue();
                             String accountType = ""+ds.child("accountType").getValue();
+                            String email = ""+ds.child("email").getValue();
+                            String shopName = ""+ds.child("shopName").getValue();
+                            String profileImage = ""+ds.child("profileImage").getValue();
                             vendorName.setText(name+"("+accountType+")");
+                            ShopNameTV.setText(shopName);
+                            ShopEmailTV.setText(email);
                         }
 
                     }
