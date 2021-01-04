@@ -29,16 +29,48 @@
 
         />
 
+
+   <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+       android:id="@+id/seller_image"
+       android:layout_width="70dp"
+       android:layout_height="70dp"
+       app:c_border_color="@color/black"
+
+       />
     <TextView
-        android:id="@+id/SellerName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/SellerNameTV"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
         android:text="Name"
-        android:gravity="center"
+        android:paddingLeft="5dp"
         android:textColor="#000000"
-        android:textSize="35sp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:layout_toEndOf="@id/seller_image"
         />
-   
+    <TextView
+        android:id="@+id/ShopNameTV"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:text="Shop Name"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/seller_image"
+        android:layout_below="@id/SellerNameTV"
+        />
+    <TextView
+        android:id="@+id/ShopEmailTV"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:text="email"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/seller_image"
+        android:layout_below="@id/ShopNameTV"
+        />
 
 </RelativeLayout>
