@@ -74,4 +74,6 @@
         android:layout_below="@id/ShopNameTV"
         />
 
+
+
 </RelativeLayout>
