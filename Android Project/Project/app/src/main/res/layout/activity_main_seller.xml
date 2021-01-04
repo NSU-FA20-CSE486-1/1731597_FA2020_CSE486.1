@@ -19,6 +19,15 @@
         android:textStyle="bold"
 
         />
+    <ImageView
+        android:id="@+id/Seller_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_toStartOf="@+id/Seller_logout_btn"
+        android:src="@drawable/additem_logo"
+        android:textStyle="bold"
+
+        />
 
     <TextView
         android:id="@+id/SellerName"
@@ -30,5 +39,6 @@
         android:textSize="35sp"
         android:textStyle="bold"
         />
+   
 
 </RelativeLayout>
