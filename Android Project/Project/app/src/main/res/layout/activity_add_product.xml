@@ -49,5 +49,105 @@
             app:c_border_width="1dp"
             app:c_border_color="@color/black"
             />
+        <EditText
+            android:id="@+id/food_nameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Food Name"
+            android:layout_below="@id/food_image"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:inputType="text"
+            android:padding="15dp"
+            />
+        <EditText
+            android:id="@+id/food_descET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Food Description"
+            android:layout_below="@id/food_nameET"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:inputType="text|textMultiLine"
+            />
+        <EditText
+            android:id="@+id/food_catET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Food Category"
+            android:layout_below="@id/food_descET"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:inputType="text"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+            />
+        <EditText
+            android:id="@+id/food_quantityET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Food Quantity"
+            android:layout_below="@id/food_catET"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:inputType="textCapWords"
+            />
+        <EditText
+            android:id="@+id/food_priceET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Food Price"
+            android:layout_below="@id/food_quantityET"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:inputType="numberDecimal"
+            />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/discountET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/food_priceET"
+            android:layout_marginTop="10dp"
+            android:text="Discount"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:id="@+id/food_discount_priceET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Discount Price"
+            android:layout_below="@id/discountET"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:inputType="numberDecimal"
+            />
+        <EditText
+            android:id="@+id/food_discount_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Discount text"
+            android:layout_below="@id/food_discount_priceET"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:inputType="textCapSentences"
+            />
+        <Button
+            android:id="@+id/food_addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Food"
+            android:layout_below="@id/food_discount_Text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/greenish"
+            android:textColor="@color/white"
+            />
+
     </RelativeLayout>
 </LinearLayout>
