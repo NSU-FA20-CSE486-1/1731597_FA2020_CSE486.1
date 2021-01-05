@@ -58,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:inputType="text"
-            android:padding="15dp"
+            android:padding="12dp"
             />
         <EditText
             android:id="@+id/food_descET"
@@ -68,7 +68,7 @@
             android:layout_below="@id/food_nameET"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:padding="15dp"
+            android:padding="12dp"
             android:inputType="text|textMultiLine"
             />
         <EditText
@@ -79,7 +79,7 @@
             android:layout_below="@id/food_descET"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:padding="15dp"
+            android:padding="12dp"
             android:inputType="text"
             android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
             />
@@ -91,7 +91,7 @@
             android:layout_below="@id/food_catET"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:padding="15dp"
+            android:padding="12dp"
             android:inputType="textCapWords"
             />
         <EditText
@@ -102,7 +102,7 @@
             android:layout_below="@id/food_quantityET"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:padding="15dp"
+            android:padding="12dp"
             android:inputType="numberDecimal"
             />
         <androidx.appcompat.widget.SwitchCompat
@@ -112,7 +112,7 @@
             android:layout_below="@id/food_priceET"
             android:layout_marginTop="10dp"
             android:text="Discount"
-            android:textSize="15dp"
+            android:padding="12dp"
             android:textStyle="bold"
             />
         <EditText
@@ -123,7 +123,7 @@
             android:layout_below="@id/discountET"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:padding="15dp"
+            android:padding="12dp"
             android:inputType="numberDecimal"
             />
         <EditText
@@ -134,7 +134,7 @@
             android:layout_below="@id/food_discount_priceET"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:padding="15dp"
+            android:padding="12dp"
             android:inputType="textCapSentences"
             />
         <Button
