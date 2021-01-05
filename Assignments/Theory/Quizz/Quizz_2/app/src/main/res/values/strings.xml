@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">Bangla Dictionary</string>
+    <string name="english_word">Enter English Word</string>
+    <string name="bengali_word">Enter Bengali Word</string>
+    <string name="save">Save</string>
+    <string name="dictionary">Dictionary</string>
+
+
+
 </resources>
