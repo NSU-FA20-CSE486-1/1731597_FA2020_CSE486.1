@@ -1,4 +1,4 @@
-package com.quizz2.sec01.quizz.test;
+package com.abirhossain.cse486.fall2020.quizz2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
