@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         dictionaryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent());
+                startActivity(new Intent(MainActivity.this,ShowDataActivity.class));
             }
         });
 
