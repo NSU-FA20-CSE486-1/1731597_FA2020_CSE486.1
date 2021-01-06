@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -101,9 +102,32 @@ public class AddProductActivity extends AppCompatActivity {
         foodCategory = food_cat.getText().toString();
         foodQuantity = food_quantity.getText().toString();
         originalPrice = food_price.getText().toString();
-        // discountPrice = food_discount_price.getText().toString();
         discountAvailable = discountSwitch.isChecked();
-      //  discountNote = food_discount_text.getText().toString();
+
+        if(TextUtils.isEmpty(foodTitle)){
+            Toast.makeText(AddProductActivity.this, "Information required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(foodCategory)){
+            Toast.makeText(AddProductActivity.this, "Information required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(originalPrice)){
+            Toast.makeText(AddProductActivity.this, "Information required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (discountAvailable){
+            discountPrice = food_discount_price.getText().toString();
+            discountNote = food_discount_text.getText().toString();
+            if(TextUtils.isEmpty(discountPrice)){
+                Toast.makeText(AddProductActivity.this, "Information required", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        else {
+            discountPrice = "0";
+            discountNote = "";
+        }
 
 
 
