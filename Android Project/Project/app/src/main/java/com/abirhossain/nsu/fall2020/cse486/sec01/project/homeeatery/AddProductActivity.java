@@ -1,5 +1,7 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -19,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddProductActivity extends AppCompatActivity {
     private ImageView backBtn,food_image;
@@ -149,6 +152,62 @@ public class AddProductActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this,cameraPermissions,CAMERA_REQUEST_CODE);
 
     }
-    // 
+    // permission results
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case CAMERA_REQUEST_CODE:
+            {
+                if (grantResults.length>0){
+                    boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (cameraAccepted && storageAccepted){
+                        pickFromCamera();
+                    }
+                    else {
+                        Toast.makeText(AddProductActivity.this, "Please allow permission", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+            case STORAGE_REQUEST_CODE:
+            {
+                if (grantResults.length>0){
+                    boolean storageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    if (storageAccepted){
+                        pickFromGallery();
+                    }
+                    else {
+                        Toast.makeText(AddProductActivity.this, "Please allow permission", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    //handle image results
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK){
+            if (requestCode == IMAGE_PICK_GALLERY_CODE){
+                //image picked from gallery
+                image_uri= data.getData();
+                //setting image
+                food_image.setImageURI(image_uri);
+
+            }
+            else if (requestCode == IMAGE_PICK_CAMERA_CODE){
+                food_image.setImageURI(image_uri);
+
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
