@@ -75,7 +75,29 @@ public class AddProductActivity extends AppCompatActivity {
                 showImagePickDialog();
             }
         });
+        food_cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //select a category
+                categoryDialog();
+            }
+        });
 
+
+    }
+
+    private void categoryDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Category")
+                .setItems(Constants.FoodCategory, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String category = Constants.FoodCategory[which];
+                        food_cat.setText(category);
+
+
+                    }
+                }).show();
 
     }
 
