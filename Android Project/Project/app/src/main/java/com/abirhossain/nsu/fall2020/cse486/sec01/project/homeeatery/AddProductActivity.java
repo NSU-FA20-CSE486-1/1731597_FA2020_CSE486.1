@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +28,7 @@ public class AddProductActivity extends AppCompatActivity {
     private static final int STORAGE_REQUEST_CODE = 300;
     //image pick constants
     private static final int IMAGE_PICK_GALLERY_CODE = 400;
-    private static final int IMAGE_PICK_CAMERA_CODE = 400;
+    private static final int IMAGE_PICK_CAMERA_CODE = 500;
     //permissions array
     private  String[] cameraPermissions;
     private String[] storagePermission;
@@ -59,11 +62,30 @@ public class AddProductActivity extends AppCompatActivity {
         food_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showImagePickDialog();
 
 
             }
         });
 
 
+    }
+
+    private void showImagePickDialog() {
+
+    }
+    private void pickFromGallery(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_PICK_GALLERY_CODE);
+    }
+    private void pickFromCamera(){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.Images.Media.TITLE,"Temp_Image_Title");
+        contentValues.put(MediaStore.Images.Media.DESCRIPTION,"Temp_Image_Description");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,image_uri);
+        startActivityForResult(intent,IMAGE_PICK_CAMERA_CODE);
     }
 }
