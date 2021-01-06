@@ -1,5 +1,6 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
@@ -7,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -65,9 +67,9 @@ public class AddProductActivity extends AppCompatActivity {
         food_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //show dialog option to pick image
                 showImagePickDialog();
-
-
             }
         });
 
@@ -75,6 +77,40 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void showImagePickDialog() {
+        //options in the dialog
+        String[] options = {"Camera","Gallery"};
+        AlertDialog.Builder builder =  new AlertDialog.Builder(this);
+        builder.setTitle("Select Image")
+                .setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which==0){
+                            //selected camera
+                            if(checkCameraPermission()){
+                                //have camera permission
+                                pickFromCamera();
+                            }
+                            else {
+                                //no camera permission
+                                requestCameraPermission();
+                            }
+                        }
+                        else {
+                            if(checkCameraPermission()){
+                                //storage permission given
+                                pickFromGallery();
+                            }
+
+                            else {
+                                // no storage permission
+                                requestStoragePermission();
+                            }
+
+                        }
+                    }
+                })
+                .show();
+        
 
     }
     private void pickFromGallery(){
@@ -102,4 +138,17 @@ public class AddProductActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this,storagePermission,STORAGE_REQUEST_CODE);
 
     }
+    private boolean checkCameraPermission(){
+        boolean result =  ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)==
+                (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                (PackageManager.PERMISSION_GRANTED);
+        return result && result1;
+    }
+    private void requestCameraPermission(){
+        ActivityCompat.requestPermissions(this,cameraPermissions,CAMERA_REQUEST_CODE);
+
+    }
+    // 
+
 }
