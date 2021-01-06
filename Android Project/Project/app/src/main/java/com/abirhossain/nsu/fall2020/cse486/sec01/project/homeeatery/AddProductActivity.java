@@ -82,6 +82,30 @@ public class AddProductActivity extends AppCompatActivity {
                 categoryDialog();
             }
         });
+        food_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inputData();
+            }
+        });
+
+    }
+
+    private String foodTitle, foodDescription, foodCategory, foodQuantity,originalPrice,discountPrice,discountNote;
+    private boolean discountAvailable = false;
+
+
+    private void inputData() {
+        foodTitle = food_name.getText().toString();
+        foodDescription = food_desc.getText().toString();
+        foodCategory = food_cat.getText().toString();
+        foodQuantity = food_quantity.getText().toString();
+        originalPrice = food_price.getText().toString();
+        // discountPrice = food_discount_price.getText().toString();
+        discountAvailable = discountSwitch.isChecked();
+      //  discountNote = food_discount_text.getText().toString();
+
+
 
 
     }
