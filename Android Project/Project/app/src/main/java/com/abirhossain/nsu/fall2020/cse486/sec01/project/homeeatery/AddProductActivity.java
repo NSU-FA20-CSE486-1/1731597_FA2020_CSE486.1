@@ -81,6 +81,8 @@ public class AddProductActivity extends AppCompatActivity {
         food_discount_price = findViewById(R.id.food_discount_priceET);
         food_discount_text = findViewById(R.id.food_discount_Text);
         food_add = findViewById(R.id.food_addBtn);
+        food_discount_price.setVisibility(View.GONE);
+        food_discount_text.setVisibility(View.GONE);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog= new ProgressDialog(this);
@@ -270,7 +272,16 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
     private  void clearData(){
-       
+        food_name.setText("");
+        food_desc.setText("");
+        food_cat.setText("");
+        food_quantity.setText("");
+        food_price.setText("");
+        food_discount_price.setText("");
+        food_discount_text.setText("");
+        food_image.setImageResource(R.drawable.food_img);
+        image_uri = null;
+
     }
 
     private void categoryDialog() {
