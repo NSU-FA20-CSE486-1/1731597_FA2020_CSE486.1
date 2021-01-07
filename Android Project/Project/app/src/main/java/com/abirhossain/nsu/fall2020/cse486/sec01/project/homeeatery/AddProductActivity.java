@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,10 +20,19 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class AddProductActivity extends AppCompatActivity {
     private ImageView backBtn,food_image;
@@ -44,6 +54,10 @@ public class AddProductActivity extends AppCompatActivity {
     // picked image uri
     private Uri image_uri;
 
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
+
+
 
 
 
@@ -63,6 +77,25 @@ public class AddProductActivity extends AppCompatActivity {
         food_discount_price = findViewById(R.id.food_discount_priceET);
         food_discount_text = findViewById(R.id.food_discount_Text);
         food_add = findViewById(R.id.food_addBtn);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog= new ProgressDialog(this);
+        progressDialog.setTitle("Please Wait while we add food");
+        progressDialog.setCanceledOnTouchOutside(false);
+        discountSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    food_discount_price.setVisibility(View.VISIBLE);
+                    food_discount_text.setVisibility(View.VISIBLE);
+
+                }
+                else {
+                    food_discount_price.setVisibility(View.GONE);
+                    food_discount_text.setVisibility(View.GONE);
+                }
+            }
+        });
 
         //initializing permission array
         cameraPermissions = new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -128,7 +161,51 @@ public class AddProductActivity extends AppCompatActivity {
             discountPrice = "0";
             discountNote = "";
         }
+        addFood();
 
+    }
+
+    private void addFood() {
+        progressDialog.setMessage("Adding item");
+        progressDialog.show();
+        String timestamp= ""+System.currentTimeMillis();
+        if (image_uri == null)
+        {
+            //without image
+            HashMap<String,Object> hashMap = new HashMap<>();
+            hashMap.put("foodId",""+timestamp);
+            hashMap.put("foodTitle",""+foodTitle);
+            hashMap.put("foodDescription",""+foodDescription);
+            hashMap.put("foodCategory",""+foodCategory);
+            hashMap.put("foodIcon","");
+            hashMap.put("originalPrice",""+originalPrice);
+            hashMap.put("discountPrice",""+discountPrice);
+            hashMap.put("discountNote",""+discountNote);
+            hashMap.put("discountAvailable",""+discountAvailable);
+            hashMap.put("timestamp",""+timestamp);
+            hashMap.put("uid",""+firebaseAuth.getUid());
+            //adding to database
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+            reference.child(firebaseAuth.getUid()).child("Foods").child(timestamp).setValue(hashMap)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddProductActivity.this, "Food Added Successfully", Toast.LENGTH_SHORT).show();
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+
+        }
 
 
 
