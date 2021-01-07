@@ -28,9 +28,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
@@ -192,6 +196,7 @@ public class AddProductActivity extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
                             progressDialog.dismiss();
                             Toast.makeText(AddProductActivity.this, "Food Added Successfully", Toast.LENGTH_SHORT).show();
+                            clearData();
 
                         }
                     })
@@ -203,12 +208,69 @@ public class AddProductActivity extends AppCompatActivity {
 
                         }
                     });
+        }
+        else {
 
+            String filePathAndName= "food_images/"+""+timestamp;
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
+            storageReference.putFile(image_uri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            //getting url of uploaded image
+                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uriTask.isSuccessful());
+                            Uri downloadImageUri = uriTask.getResult();
+                            if (uriTask.isSuccessful()){
 
+                                HashMap<String,Object> hashMap = new HashMap<>();
+                                hashMap.put("foodId",""+timestamp);
+                                hashMap.put("foodTitle",""+foodTitle);
+                                hashMap.put("foodDescription",""+foodDescription);
+                                hashMap.put("foodCategory",""+foodCategory);
+                                hashMap.put("foodIcon",""+downloadImageUri);
+                                hashMap.put("originalPrice",""+originalPrice);
+                                hashMap.put("discountPrice",""+discountPrice);
+                                hashMap.put("discountNote",""+discountNote);
+                                hashMap.put("discountAvailable",""+discountAvailable);
+                                hashMap.put("timestamp",""+timestamp);
+                                hashMap.put("uid",""+firebaseAuth.getUid());
+                                //adding to database
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                                reference.child(firebaseAuth.getUid()).child("Foods").child(timestamp).setValue(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(AddProductActivity.this, "Food Added Successfully", Toast.LENGTH_SHORT).show();
+                                                clearData();
+
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(AddProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        });
+
+                            }
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
         }
 
-
-
+    }
+    private  void clearData(){
+       
     }
 
     private void categoryDialog() {
