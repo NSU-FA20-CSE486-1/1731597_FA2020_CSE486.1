@@ -94,11 +94,13 @@ public class AddProductActivity extends AppCompatActivity {
                 if (isChecked){
                     food_discount_price.setVisibility(View.VISIBLE);
                     food_discount_text.setVisibility(View.VISIBLE);
+                    food_add.setVisibility(View.VISIBLE);
 
                 }
                 else {
                     food_discount_price.setVisibility(View.GONE);
                     food_discount_text.setVisibility(View.GONE);
+
                 }
             }
         });
