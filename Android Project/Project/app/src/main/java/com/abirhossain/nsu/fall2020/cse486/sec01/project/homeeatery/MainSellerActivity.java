@@ -39,7 +39,7 @@ public class MainSellerActivity extends AppCompatActivity {
         orderTV = findViewById(R.id.orderTV);
         ordersShowToSeller = findViewById(R.id.ordersShowToSeller);
         foodsShowToSeller = findViewById(R.id.foodsShowToSeller);
-        
+
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -64,6 +64,7 @@ public class MainSellerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //show foods
+                showFoodsUI();
 
             }
         });
@@ -71,11 +72,21 @@ public class MainSellerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //show orders
+                showOrdersUI();
 
             }
         });
 
     }
+    private void showFoodsUI() {
+
+
+    }
+
+
+    private void showOrdersUI() {
+    }
+
 
 
     private void checkVendor() {
