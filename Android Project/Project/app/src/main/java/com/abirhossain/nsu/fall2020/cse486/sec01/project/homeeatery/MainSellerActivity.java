@@ -79,12 +79,29 @@ public class MainSellerActivity extends AppCompatActivity {
 
     }
     private void showFoodsUI() {
+        //food ui showing and hiding order ui
+        foodsShowToSeller.setVisibility(View.VISIBLE);
+        ordersShowToSeller.setVisibility(View.GONE);
+
+        availableFoodTV.setBackgroundResource(R.color.white);
+        orderTV.setBackgroundResource(R.color.background);
+
 
 
     }
 
 
     private void showOrdersUI() {
+        //order ui showing and food order ui
+
+        foodsShowToSeller.setVisibility(View.GONE);
+        ordersShowToSeller.setVisibility(View.VISIBLE);
+
+        orderTV.setBackgroundResource(R.color.white);
+        availableFoodTV.setBackgroundResource(R.color.background);
+
+
+
     }
 
 
