@@ -8,105 +8,130 @@
     android:background="#E2EBE6"
     android:padding="15dp"
     >
-
-    <ImageView
-        android:id="@+id/Seller_logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/logout"
-        android:textStyle="bold"
-
-        />
-    <ImageView
-        android:id="@+id/Seller_add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:layout_toStartOf="@+id/Seller_logout_btn"
-        android:src="@drawable/additem_logo"
-        android:textStyle="bold"
-
-        />
-
-
-   <com.blogspot.atifsoftwares.circularimageview.CircularImageView
-       android:id="@+id/seller_image"
-       android:layout_width="70dp"
-       android:layout_height="70dp"
-       app:c_border_color="@color/black"
-       android:src="@drawable/ic_baseline_person_24"
-
-       />
-    <TextView
-        android:id="@+id/SellerNameTV"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:text="Name"
-        android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_toEndOf="@id/seller_image"
-        />
-    <TextView
-        android:id="@+id/ShopNameTV"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:text="Shop Name"
-        android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_toEndOf="@id/seller_image"
-        android:layout_below="@id/SellerNameTV"
-        />
-    <TextView
-        android:id="@+id/ShopEmailTV"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:text="email"
-        android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_toEndOf="@id/seller_image"
-        android:layout_below="@id/ShopNameTV"
-        />
-    <!--Foods and orders-->
-    <LinearLayout
-        android:layout_below="@id/seller_image"
+    <RelativeLayout
+        android:id="@+id/header_seller"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-        <TextView
-            android:id="@+id/availableFoodTV"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/Seller_logout_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Items Available"
-            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/logout"
             android:textStyle="bold"
-            android:background="@color/white"
+
+            />
+        <ImageView
+            android:id="@+id/Seller_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/Seller_logout_btn"
+            android:src="@drawable/additem_logo"
+            android:textStyle="bold"
+
+            />
+
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/seller_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:c_border_color="@color/black"
+            android:src="@drawable/ic_baseline_person_24"
 
             />
         <TextView
-            android:id="@+id/orderTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="orders"
-            android:textColor="@color/black"
+            android:id="@+id/SellerNameTV"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="Name"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
             android:textStyle="bold"
+            android:layout_toEndOf="@id/seller_image"
             />
+        <TextView
+            android:id="@+id/ShopNameTV"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="Shop Name"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/seller_image"
+            android:layout_below="@id/SellerNameTV"
+            />
+        <TextView
+            android:id="@+id/ShopEmailTV"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="email"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/seller_image"
+            android:layout_below="@id/ShopNameTV"
+            />
+        <!--Foods and orders-->
+        <LinearLayout
+            android:layout_below="@id/seller_image"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/availableFoodTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Items Available"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:background="@color/white"
 
-    </LinearLayout>
+                />
+            <TextView
+                android:id="@+id/orderTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="orders"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
+  <!-- Foods -->
+    <RelativeLayout
+        android:id="@+id/foodsShowToSeller"
+        android:layout_below="@+id/header_seller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
+
+    </RelativeLayout>
+
+    <!-- orders -->
+    <RelativeLayout
+        android:id="@+id/ordersShowToSeller"
+        android:layout_below="@+id/header_seller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

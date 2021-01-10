@@ -57,12 +57,14 @@ public class MainSellerActivity extends AppCompatActivity {
         availableFoodTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //show foods
 
             }
         });
         orderTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //show orders
 
             }
         });
