@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ public class MainSellerActivity extends AppCompatActivity {
     private TextView vendorName,ShopNameTV,ShopEmailTV,availableFoodTV,orderTV;
     private ImageView logOutBtn, AddProductBtn,sellerImage;
     private FirebaseAuth firebaseAuth;
+    private RelativeLayout foodsShowToSeller,ordersShowToSeller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class MainSellerActivity extends AppCompatActivity {
         ShopEmailTV = findViewById(R.id.ShopEmailTV);
         availableFoodTV= findViewById(R.id.availableFoodTV);
         orderTV = findViewById(R.id.orderTV);
+        ordersShowToSeller = findViewById(R.id.ordersShowToSeller);
+        foodsShowToSeller = findViewById(R.id.foodsShowToSeller);
+        
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
