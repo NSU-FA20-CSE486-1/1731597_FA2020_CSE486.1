@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="2dp"
+    android:layout_marginBottom="2dp"
+    app:cardElevation="5dp"
+    android:background="@color/background"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/foodIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/additem_logo"
+            >
+        </ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/foodIcon"
+            >
+            <TextView
+                android:id="@+id/discountNoteTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15% Off"
+                android:background="@color/black"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="2dp"
+                />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
