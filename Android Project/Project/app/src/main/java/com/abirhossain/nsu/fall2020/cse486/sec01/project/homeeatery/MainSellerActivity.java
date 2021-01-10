@@ -44,6 +44,8 @@ public class MainSellerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
+        //after opening app show the products available
+        showFoodsUI();
 
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
