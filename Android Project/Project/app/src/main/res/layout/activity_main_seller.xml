@@ -81,6 +81,7 @@
         android:orientation="horizontal"
         android:padding="10dp">
         <TextView
+            android:id="@+id/availableFoodTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -89,9 +90,10 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:background="@color/white"
-            android:padding=""
+
             />
         <TextView
+            android:id="@+id/orderTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

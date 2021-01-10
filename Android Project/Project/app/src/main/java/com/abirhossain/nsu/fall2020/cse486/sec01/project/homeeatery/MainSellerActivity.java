@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class MainSellerActivity extends AppCompatActivity {
-    private TextView vendorName,ShopNameTV,ShopEmailTV;
+    private TextView vendorName,ShopNameTV,ShopEmailTV,availableFoodTV,orderTV;
     private ImageView logOutBtn, AddProductBtn,sellerImage;
     private FirebaseAuth firebaseAuth;
 
@@ -33,6 +33,8 @@ public class MainSellerActivity extends AppCompatActivity {
         sellerImage = findViewById(R.id.seller_image);
         ShopNameTV = findViewById(R.id.ShopNameTV);
         ShopEmailTV = findViewById(R.id.ShopEmailTV);
+        availableFoodTV= findViewById(R.id.availableFoodTV);
+        orderTV = findViewById(R.id.orderTV);
 
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
@@ -52,8 +54,21 @@ public class MainSellerActivity extends AppCompatActivity {
                 startActivity(new Intent(MainSellerActivity.this,AddProductActivity.class));
             }
         });
+        availableFoodTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        orderTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
+
 
     private void checkVendor() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
