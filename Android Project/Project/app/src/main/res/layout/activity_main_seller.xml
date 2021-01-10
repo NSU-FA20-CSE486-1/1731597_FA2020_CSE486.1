@@ -73,6 +73,37 @@
         android:layout_toEndOf="@id/seller_image"
         android:layout_below="@id/ShopNameTV"
         />
+    <!--Foods and orders-->
+    <LinearLayout
+        android:layout_below="@id/seller_image"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Items Available"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:background="@color/white"
+            android:padding=""
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="orders"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+
 
 
 
