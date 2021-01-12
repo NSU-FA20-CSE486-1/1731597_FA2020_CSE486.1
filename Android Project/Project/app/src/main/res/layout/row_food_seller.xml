@@ -77,11 +77,11 @@
                     />
                 <TextView
                     android:layout_toEndOf="@id/priceDiscounted"
-                    android:id="@+id/originalDiscounted"
+                    android:id="@+id/originalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="original price"
-                    android:background="@color/greenish"
+                    android:background="@color/black"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:padding="2dp"
