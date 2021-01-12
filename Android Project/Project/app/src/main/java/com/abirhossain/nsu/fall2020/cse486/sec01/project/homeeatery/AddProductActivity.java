@@ -191,6 +191,7 @@ public class AddProductActivity extends AppCompatActivity {
             hashMap.put("foodTitle",""+foodTitle);
             hashMap.put("foodDescription",""+foodDescription);
             hashMap.put("foodCategory",""+foodCategory);
+            hashMap.put("foodQuantity",""+foodQuantity);
             hashMap.put("foodIcon","");
             hashMap.put("originalPrice",""+originalPrice);
             hashMap.put("discountPrice",""+discountPrice);
@@ -238,6 +239,7 @@ public class AddProductActivity extends AppCompatActivity {
                                 hashMap.put("foodTitle",""+foodTitle);
                                 hashMap.put("foodDescription",""+foodDescription);
                                 hashMap.put("foodCategory",""+foodCategory);
+                                hashMap.put("foodQuantity",""+foodQuantity);
                                 hashMap.put("foodIcon",""+downloadImageUri);
                                 hashMap.put("originalPrice",""+originalPrice);
                                 hashMap.put("discountPrice",""+discountPrice);

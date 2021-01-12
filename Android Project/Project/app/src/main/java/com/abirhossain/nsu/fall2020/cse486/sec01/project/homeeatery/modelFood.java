@@ -1,19 +1,20 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 public class modelFood {
-    private String foodId,foodTitle,foodDescription,foodCategory,foodIcon,
+    private String foodId,foodTitle,foodDescription,foodCategory,foodQuantity,foodIcon,
             originalPrice,discountPrice,discountNote,discountAvailable,timestamp,uid;
 
     public modelFood() {
     }
 
-    public modelFood(String foodId, String foodTitle, String foodDescription, String foodCategory,
+    public modelFood(String foodId, String foodTitle, String foodDescription, String foodCategory,String foodQuantity,
                      String foodIcon, String originalPrice, String discountPrice, String discountNote,
                      String discountAvailable, String timestamp, String uid) {
         this.foodId = foodId;
         this.foodTitle = foodTitle;
         this.foodDescription = foodDescription;
         this.foodCategory = foodCategory;
+        this.foodQuantity = foodQuantity;
         this.foodIcon = foodIcon;
         this.originalPrice = originalPrice;
         this.discountPrice = discountPrice;
@@ -53,6 +54,14 @@ public class modelFood {
 
     public void setFoodCategory(String foodCategory) {
         this.foodCategory = foodCategory;
+    }
+
+    public String getFoodQuantity() {
+        return foodQuantity;
+    }
+
+    public void setFoodQuantity(String foodQuantity) {
+        this.foodQuantity = foodQuantity;
     }
 
     public String getFoodIcon() {
