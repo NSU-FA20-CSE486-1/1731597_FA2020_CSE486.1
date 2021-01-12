@@ -50,7 +50,23 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         String timeStamp = ModelFood.getTimestamp();
         String OriginalPrice = ModelFood.getOriginalPrice();
 
-       
+        //setting data
+        holder.titleTV.setText(title);
+        holder.FoodQuantityTV.setText(foodQuantity);
+        holder.priceDiscounted.setText("$"+discountPrice);
+        holder.discountNote.setText(discountNote);
+        holder.originalPrice.setText("$"+OriginalPrice);
+        if(discountAvailable.equals("true")){
+            //product with discount
+            holder.priceDiscounted.setVisibility(View.VISIBLE);
+            holder.discountNote.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            //product without discount
+            holder.priceDiscounted.setVisibility(View.GONE);
+            holder.discountNote.setVisibility(View.GONE);
+        }
 
 
 
