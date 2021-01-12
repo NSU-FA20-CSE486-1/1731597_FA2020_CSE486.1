@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.transition.Hold;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,15 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
             holder.priceDiscounted.setVisibility(View.GONE);
             holder.discountNote.setVisibility(View.GONE);
         }
+        try {
+            Picasso.get().load(foodIcon).placeholder(R.drawable.food_img).into(holder.foodIconIV);
+
+        }
+        catch (Exception e){
+            holder.foodIconIV.setImageResource(R.drawable.food_img);
+
+        }
+        
 
 
 
