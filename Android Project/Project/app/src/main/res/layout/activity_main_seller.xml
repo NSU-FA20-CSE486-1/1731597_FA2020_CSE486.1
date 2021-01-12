@@ -118,6 +118,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+        <EditText
+            android:id="@+id/searchFoodsET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:padding="6dp"
+            android:hint="Search Food"
+            android:layout_toStartOf="@+id/filterFoodBtn"
+            />
+        <ImageView
+            android:id="@+id/filterFoodBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_search_24"
+            android:layout_centerVertical="true"
+            android:background="@color/greenish"
+            />
+
 
 
     </RelativeLayout>
