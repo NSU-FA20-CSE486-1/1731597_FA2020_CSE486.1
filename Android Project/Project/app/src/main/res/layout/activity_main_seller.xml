@@ -132,7 +132,7 @@
             android:layout_toStartOf="@+id/filterFoodBtn"
             android:layout_marginRight="5dp"
             />
-        <ImageButton
+        <ImageView
             android:id="@+id/filterFoodBtn"
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -141,14 +141,27 @@
             android:background="@color/greenish"
             android:scaleType="fitXY"
             />
-      
+
+        <TextView
+            android:id="@+id/filteredFoodTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchFoodsET"
+            android:background="@color/white"
+            android:text="showing all foods"
+            android:textStyle="bold"
+            android:padding="5dp"
+            />
+
         <!--recyclerView to show products-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ShowFoodRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/searchFoodsET"
+            android:layout_below="@id/filteredFoodTV"
             android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_food_seller"
             />
 
 

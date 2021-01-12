@@ -2,10 +2,12 @@ package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,10 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class MainSellerActivity extends AppCompatActivity {
-    private TextView vendorName,ShopNameTV,ShopEmailTV,availableFoodTV,orderTV;
-    private ImageView logOutBtn, AddProductBtn,sellerImage;
+    private TextView vendorName,ShopNameTV,ShopEmailTV,availableFoodTV,orderTV,filteredFoodTV;
+    private ImageView logOutBtn, AddProductBtn,sellerImage,filterFoodBtn;
     private FirebaseAuth firebaseAuth;
     private RelativeLayout foodsShowToSeller,ordersShowToSeller;
+    private EditText searchFoodsET;
+    private RecyclerView ShowFoodRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,13 @@ public class MainSellerActivity extends AppCompatActivity {
         orderTV = findViewById(R.id.orderTV);
         ordersShowToSeller = findViewById(R.id.ordersShowToSeller);
         foodsShowToSeller = findViewById(R.id.foodsShowToSeller);
+        filteredFoodTV = findViewById(R.id.filteredFoodTV);
+        searchFoodsET = findViewById(R.id.searchFoodsET);
+        filterFoodBtn = findViewById(R.id.filterFoodBtn);
+        ShowFoodRecyclerView = findViewById(R.id.ShowFoodRecyclerView);
+
+
+
 
 
 
