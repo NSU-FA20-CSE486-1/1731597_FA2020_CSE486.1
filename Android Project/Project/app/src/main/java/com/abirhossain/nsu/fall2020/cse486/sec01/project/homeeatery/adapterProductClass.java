@@ -5,6 +5,8 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,14 +18,16 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class adapterProductClass extends RecyclerView.Adapter<adapterProductClass.HolderProductSeller>{
+public class adapterProductClass extends RecyclerView.Adapter<adapterProductClass.HolderProductSeller> implements Filterable {
 
     private Context context;
-    public ArrayList<modelFood> foodList;
+    public ArrayList<modelFood> foodList,filterList;
+    private FilterFoods filter;
 
     public adapterProductClass(Context context, ArrayList<modelFood> foodList) {
         this.context = context;
         this.foodList = foodList;
+        this.filterList = foodList;
     }
 
     @NonNull
@@ -90,6 +94,16 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
     @Override
     public int getItemCount() {
         return foodList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null){
+            filter= new FilterFoods(this,foodList);
+        }
+
+
+        return filter;
     }
 
     class HolderProductSeller extends RecyclerView.ViewHolder{
