@@ -76,7 +76,12 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
             holder.foodIconIV.setImageResource(R.drawable.food_img);
 
         }
-        
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
 
