@@ -8,6 +8,14 @@ public class Constants {
             "Soup",
             "Drinks"
     };
+
+    public static final String[] FoodCategory1 = {
+            "All",
+            "Set Menu",
+            "Dessert",
+            "Soup",
+            "Drinks"
+    };
     
 
 }
