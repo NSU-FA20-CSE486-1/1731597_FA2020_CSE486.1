@@ -1,9 +1,11 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -91,6 +93,19 @@ public class MainSellerActivity extends AppCompatActivity {
 
             }
         });
+        filterFoodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainSellerActivity.this);
+                builder.setTitle("Choose food category")
+                        .setItems(Constants.FoodCategory, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+            }
+        });
 
     }
 
@@ -104,7 +119,7 @@ public class MainSellerActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //clear the list 
+                        //clear the list
                         foodList.clear();
                         for (DataSnapshot ds: snapshot.getChildren()){
                             modelFood ModelFood = ds.getValue(modelFood.class);
