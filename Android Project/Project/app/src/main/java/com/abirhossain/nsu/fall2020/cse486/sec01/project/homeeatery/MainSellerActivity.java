@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class MainSellerActivity extends AppCompatActivity {
     private TextView vendorName,ShopNameTV,ShopEmailTV,availableFoodTV,orderTV,filteredFoodTV;
     private ImageView logOutBtn, AddProductBtn,sellerImage,filterFoodBtn;
@@ -28,6 +30,8 @@ public class MainSellerActivity extends AppCompatActivity {
     private RelativeLayout foodsShowToSeller,ordersShowToSeller;
     private EditText searchFoodsET;
     private RecyclerView ShowFoodRecyclerView;
+    private ArrayList<modelFood> foodList;
+    private adapterProductClass adapterFoodSeller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +54,9 @@ public class MainSellerActivity extends AppCompatActivity {
 
 
 
-
-
-
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
+        LoadAllFoods();
         //after opening app show the products available
         showFoodsUI();
 
@@ -91,6 +93,38 @@ public class MainSellerActivity extends AppCompatActivity {
         });
 
     }
+
+    private void LoadAllFoods() {
+
+        foodList = new ArrayList<>();
+
+        //get all foods
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(firebaseAuth.getUid()).child("Foods")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //clear the list 
+                        foodList.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            modelFood ModelFood = ds.getValue(modelFood.class);
+                            foodList.add(ModelFood);
+
+                        }
+                        //adapter setup
+                        adapterFoodSeller = new adapterProductClass(MainSellerActivity.this,foodList);
+                        ShowFoodRecyclerView.setAdapter(adapterFoodSeller);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                })
+
+
+    }
+
     private void showFoodsUI() {
         //food ui showing and hiding order ui
         foodsShowToSeller.setVisibility(View.VISIBLE);
