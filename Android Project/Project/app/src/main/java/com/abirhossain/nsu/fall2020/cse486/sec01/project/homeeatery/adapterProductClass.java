@@ -97,11 +97,10 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
     }
 
     @Override
-    public Filter getFilter() {
+    public  Filter getFilter() {
         if (filter == null){
-            filter= new FilterFoods(this,foodList);
+            filter= new FilterFoods(this,filterList);
         }
-
 
         return filter;
     }

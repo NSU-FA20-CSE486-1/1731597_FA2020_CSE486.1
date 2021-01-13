@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,12 +57,36 @@ public class MainSellerActivity extends AppCompatActivity {
         ShowFoodRecyclerView = findViewById(R.id.ShowFoodRecyclerView);
 
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         checkVendor();
         LoadAllFoods();
         //after opening app show the products available
         showFoodsUI();
+        //search foods
+        searchFoodsET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,14 +124,60 @@ public class MainSellerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainSellerActivity.this);
                 builder.setTitle("Choose food category")
-                        .setItems(Constants.FoodCategory, new DialogInterface.OnClickListener() {
+                        .setItems(Constants.FoodCategory1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                //get searched food
+                                String selectedFood = Constants.FoodCategory1[which];
+                                filteredFoodTV.setText(selectedFood);
+                                if (selectedFood.equals("All")){
+                                    //load all foods
+
+                                }
+                                else
+                                {
+                                    loadSearchedFood(selectedFood);
+                                }
 
                             }
-                        })
+                        }).show();
             }
         });
+
+    }
+
+    private void loadSearchedFood(String selectedFood) {
+        foodList = new ArrayList<>();
+
+        //get all foods
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(firebaseAuth.getUid()).child("Foods")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //clear the list
+                        foodList.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            String foodCategory = ""+ds.child("foodCategory").getValue();
+                            //if selected food category exists
+                            if(selectedFood.equals(foodCategory)){
+                                modelFood ModelFood = ds.getValue(modelFood.class);
+                                foodList.add(ModelFood);
+                            }
+
+
+                        }
+                        //adapter setup
+                        adapterFoodSeller = new adapterProductClass(MainSellerActivity.this,foodList);
+                        ShowFoodRecyclerView.setAdapter(adapterFoodSeller);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
     }
 
@@ -135,8 +207,7 @@ public class MainSellerActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                })
-
+                });
 
     }
 

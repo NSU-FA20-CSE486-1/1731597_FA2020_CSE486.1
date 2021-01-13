@@ -37,7 +37,7 @@ public class FilterFoods extends Filter {
 
         }
 
-        return null;
+        return results;
     }
 
     @Override
