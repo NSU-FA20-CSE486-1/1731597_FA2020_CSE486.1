@@ -1,6 +1,8 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -171,12 +173,34 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
             @Override
             public void onClick(View v) {
 
+                //edit product activity
+
             }
         });
         //delete button
         Seller_delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //delete product
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete Food")
+                        .setMessage("Are you sure you want to delete "+title+"?")
+                        .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //delete food
+                                deleteFood(id);
+
+                            }
+                        }).setNegativeButton("KEEP", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //deletion cancel
+                        dialog.dismiss();
+
+                    }
+                }).show();
+
 
             }
         });
