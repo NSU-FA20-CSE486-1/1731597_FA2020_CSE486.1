@@ -98,7 +98,9 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         //inflating view
         View view = LayoutInflater.from(context).inflate(R.layout.product_details_vendor,null);
+        //setting content
         bottomSheetDialog.setContentView(view);
+
         //initializing views
         ImageView backBtnOrderDetails,Seller_delete_btn,Seller_edit_btn,foodIconIVOrderDetails;
         TextView OrderDetailsTVHeader,discountNoteTVOrderDetails,FoodTitleTVOrderDetails,FoodDescriptionTVOrderDetails,FoodCategoryTVOrderDetails,
@@ -140,6 +142,8 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         discountNoteTVOrderDetails.setText(discountNote);
         priceDiscountedOrderDetails.setText("$"+discountPrice);
         originalPriceOrderDetails.setText("$"+OriginalPrice);
+        //showing dialog
+        bottomSheetDialog.show();
 
         if(discountAvailable.equals("true")){
             //product with discount
@@ -180,7 +184,8 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         backBtnOrderDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                bottomSheetDialog.dismiss();
+
             }
         });
 
