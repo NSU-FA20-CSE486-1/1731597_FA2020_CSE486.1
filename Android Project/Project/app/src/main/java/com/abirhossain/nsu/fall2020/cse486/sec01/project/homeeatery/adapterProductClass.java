@@ -93,7 +93,7 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
 
     }
 
-    private void foodDetails(modelFood modelFood) {
+    private void foodDetails(modelFood ModelFood) {
         //bottom sheet dialog
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         //inflating view
@@ -117,9 +117,30 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         priceDiscountedOrderDetails = view.findViewById(R.id.priceDiscountedOrderDetails);
         originalPriceOrderDetails = view.findViewById(R.id.originalPriceOrderDetails);
 
+        //getting data
 
+        String id = ModelFood.getFoodId();
+        String uid = ModelFood.getUid();
+        String discountAvailable = ModelFood.getDiscountAvailable();
+        String discountNote = ModelFood.getDiscountNote();
+        String discountPrice = ModelFood.getDiscountPrice();
+        String foodCategory = ModelFood.getFoodCategory();
+        String foodDescription = ModelFood.getFoodDescription();
+        String foodIcon = ModelFood.getFoodIcon();
+        String foodQuantity = ModelFood.getFoodQuantity();
+        String title = ModelFood.getFoodTitle();
+        String timeStamp = ModelFood.getTimestamp();
+        String OriginalPrice = ModelFood.getOriginalPrice();
 
-
+        //setting data
+        FoodTitleTVOrderDetails.setText(title);
+        FoodDescriptionTVOrderDetails.setText(foodDescription);
+        FoodCategoryTVOrderDetails.setText(foodCategory);
+        FoodQuantityTVOrderDetails.setText(foodQuantity);
+        discountNoteTVOrderDetails.setText(discountNote);
+        priceDiscountedOrderDetails.setText("$"+discountPrice);
+        originalPriceOrderDetails.setText("$"+OriginalPrice);
+        
 
     }
 
