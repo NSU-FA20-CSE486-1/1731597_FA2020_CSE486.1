@@ -145,7 +145,7 @@
                 />
             <TextView
                 android:layout_toEndOf="@id/priceDiscountedOrderDetails"
-                android:id="@+id/originalPrice"
+                android:id="@+id/originalPriceOrderDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="original price"

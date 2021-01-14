@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.transition.Hold;
 import com.squareup.picasso.Picasso;
 
@@ -83,9 +84,40 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // food details
+                foodDetails(ModelFood); // model food contains all the details of the food
             }
         });
+
+
+
+    }
+
+    private void foodDetails(modelFood modelFood) {
+        //bottom sheet dialog
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+        //inflating view
+        View view = LayoutInflater.from(context).inflate(R.layout.product_details_vendor,null);
+        bottomSheetDialog.setContentView(view);
+        //initializing views
+        ImageView backBtnOrderDetails,Seller_delete_btn,Seller_edit_btn,foodIconIVOrderDetails;
+        TextView OrderDetailsTVHeader,discountNoteTVOrderDetails,FoodTitleTVOrderDetails,FoodDescriptionTVOrderDetails,FoodCategoryTVOrderDetails,
+                FoodQuantityTVOrderDetails,priceDiscountedOrderDetails,originalPriceOrderDetails;
+        //ui initializing
+        backBtnOrderDetails = view.findViewById(R.id.backBtnOrderDetails);
+        Seller_delete_btn = view.findViewById(R.id.Seller_delete_btn);
+        Seller_edit_btn = view.findViewById(R.id.Seller_edit_btn);
+        foodIconIVOrderDetails = view.findViewById(R.id.foodIconIVOrderDetails);
+        OrderDetailsTVHeader = view.findViewById(R.id.OrderDetailsTV);
+        discountNoteTVOrderDetails = view.findViewById(R.id.discountNoteTVOrderDetails);
+        FoodTitleTVOrderDetails = view.findViewById(R.id.FoodTitleTVOrderDetails);
+        FoodDescriptionTVOrderDetails = view.findViewById(R.id.FoodDescriptionTVOrderDetails);
+        FoodCategoryTVOrderDetails = view.findViewById(R.id.FoodCategoryTVOrderDetails);
+        FoodQuantityTVOrderDetails = view.findViewById(R.id.FoodQuantityTVOrderDetails);
+        priceDiscountedOrderDetails = view.findViewById(R.id.priceDiscountedOrderDetails);
+        originalPriceOrderDetails = view.findViewById(R.id.originalPriceOrderDetails);
+
+
 
 
 
