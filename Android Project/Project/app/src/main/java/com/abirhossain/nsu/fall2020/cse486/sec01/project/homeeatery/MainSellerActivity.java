@@ -132,7 +132,7 @@ public class MainSellerActivity extends AppCompatActivity {
                                 filteredFoodTV.setText(selectedFood);
                                 if (selectedFood.equals("All")){
                                     //load all foods
-
+                                    LoadAllFoods();
                                 }
                                 else
                                 {

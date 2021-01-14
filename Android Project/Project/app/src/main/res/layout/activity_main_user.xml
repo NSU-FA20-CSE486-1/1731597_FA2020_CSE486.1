@@ -6,27 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".MainUserActivity"
     android:background="#E2EBE6"
-    android:padding="15dp">
-    <ImageView
-        android:id="@+id/Client_logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/logout"
-        android:textStyle="bold"
+    >
 
-        />
-    <TextView
-        android:id="@+id/ClientName"
+    <RelativeLayout
+        android:id="@+id/header_seller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="35sp"
-        android:textStyle="bold"
+        android:background="@color/greenish"
+        >
+        <ImageView
+            android:id="@+id/Client_logout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/logout"
+            android:textStyle="bold"
 
-        />
+            />
+
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/client_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:c_border_color="@color/black"
+            android:src="@drawable/ic_baseline_person_24"
+
+            />
+        <TextView
+            android:id="@+id/ClientName"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="Name"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/client_image"
+            />
+        <TextView
+            android:id="@+id/clientEmailTV"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="Email"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/client_image"
+            android:layout_below="@id/ClientName"
+            />
+        <TextView
+            android:id="@+id/ClientPhnTV"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:text="Phone"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/client_image"
+            android:layout_below="@id/clientEmailTV"
+            />
+
+
+
+        <!--Foods and orders-->
+        <LinearLayout
+            android:layout_below="@id/client_image"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/availableShopsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Shops"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:background="@color/white"
+
+                />
+            <TextView
+                android:id="@+id/ClientOrderTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="orders"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
