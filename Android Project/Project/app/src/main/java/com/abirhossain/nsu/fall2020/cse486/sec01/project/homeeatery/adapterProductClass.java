@@ -161,6 +161,30 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
 
         }
 
+        // handling buttons
+        //edit button
+        Seller_edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //delete button
+        Seller_delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //back button
+        backBtnOrderDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
+
     }
 
     @Override
