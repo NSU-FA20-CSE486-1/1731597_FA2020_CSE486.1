@@ -180,6 +180,7 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
             public void onClick(View v) {
 
                 //edit product activity
+                Toast.makeText(context, "Work in progress", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -226,7 +227,7 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
        //delete food using its id
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(firebaseAuth.getUid()).child("Foods").child("id").removeValue()
+        reference.child(firebaseAuth.getUid()).child("Foods").child(id).removeValue()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

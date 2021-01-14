@@ -6,6 +6,7 @@ public class Constants {
             "Set Menu",
             "Dessert",
             "Soup",
+            "Fast Food",
             "Drinks"
     };
 
@@ -14,6 +15,7 @@ public class Constants {
             "Set Menu",
             "Dessert",
             "Soup",
+            "Fast Food",
             "Drinks"
     };
     
