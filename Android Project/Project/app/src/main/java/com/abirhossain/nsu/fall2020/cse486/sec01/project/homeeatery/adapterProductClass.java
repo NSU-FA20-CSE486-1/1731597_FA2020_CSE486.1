@@ -140,7 +140,19 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
         discountNoteTVOrderDetails.setText(discountNote);
         priceDiscountedOrderDetails.setText("$"+discountPrice);
         originalPriceOrderDetails.setText("$"+OriginalPrice);
-        
+
+        if(discountAvailable.equals("true")){
+            //product with discount
+            priceDiscountedOrderDetails.setVisibility(View.VISIBLE);
+            discountNoteTVOrderDetails.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            //product without discount
+            priceDiscountedOrderDetails.setVisibility(View.GONE);
+            discountNoteTVOrderDetails.setVisibility(View.GONE);
+        }
+
 
     }
 
