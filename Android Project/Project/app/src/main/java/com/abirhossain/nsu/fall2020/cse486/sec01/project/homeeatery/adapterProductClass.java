@@ -152,7 +152,14 @@ public class adapterProductClass extends RecyclerView.Adapter<adapterProductClas
             priceDiscountedOrderDetails.setVisibility(View.GONE);
             discountNoteTVOrderDetails.setVisibility(View.GONE);
         }
+        try {
+            Picasso.get().load(foodIcon).placeholder(R.drawable.food_img).into(foodIconIVOrderDetails);
 
+        }
+        catch (Exception e){
+            foodIconIVOrderDetails.setImageResource(R.drawable.food_img);
+
+        }
 
     }
 
