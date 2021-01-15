@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,9 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainUserActivity extends AppCompatActivity {
 
-    private TextView userName;
-    private ImageView logOutBtn;
+    private TextView userName,clientEmailTV,ClientPhnTV,availableShopsTV,ClientOrderTV;
+    private ImageView logOutBtn,client_image;
     private FirebaseAuth firebaseAuth;
+    private RelativeLayout shopsShowToClient,ordersShowToClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,15 @@ public class MainUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_user);
         userName = findViewById(R.id.ClientName);
         logOutBtn = findViewById(R.id.Client_logout_btn);
+        client_image = findViewById(R.id.client_image);
+        clientEmailTV = findViewById(R.id.clientEmailTV);
+        ClientPhnTV = findViewById(R.id.ClientPhnTV);
+        availableShopsTV = findViewById(R.id.availableShopsTV);
+        ClientOrderTV = findViewById(R.id.ClientOrderTV);
+        shopsShowToClient = findViewById(R.id.shopsShowToClient);
+        ordersShowToClient = findViewById(R.id.ordersShowToClient);
+
+
         firebaseAuth = FirebaseAuth.getInstance();
         checkClient();
         logOutBtn.setOnClickListener(new View.OnClickListener() {
