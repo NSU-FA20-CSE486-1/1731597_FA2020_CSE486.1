@@ -43,6 +43,8 @@ public class MainUserActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         checkClient();
+        showRestaurents();
+
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,9 +52,51 @@ public class MainUserActivity extends AppCompatActivity {
                 checkClient();
             }
         });
+        availableShopsTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRestaurents();
+            }
+        });
+        ClientOrderTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userOrders();
+            }
+        });
 
-        
+
+
     }
+
+    private void showRestaurents(){
+        //food ui showing and hiding order ui
+        shopsShowToClient.setVisibility(View.VISIBLE);
+        ordersShowToClient.setVisibility(View.GONE);
+
+        availableShopsTV.setBackgroundResource(R.color.white);
+        ClientOrderTV.setBackgroundResource(R.color.background);
+
+
+
+    }
+
+
+
+    private void userOrders() {
+        //order ui showing and food order ui
+
+        shopsShowToClient.setVisibility(View.GONE);
+        ordersShowToClient.setVisibility(View.VISIBLE);
+
+        ClientOrderTV.setBackgroundResource(R.color.white);
+        availableShopsTV.setBackgroundResource(R.color.background);
+
+
+
+    }
+
+
     private void checkClient() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user==null){

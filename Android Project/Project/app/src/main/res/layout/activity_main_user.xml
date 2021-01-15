@@ -110,7 +110,14 @@
         android:id="@+id/shopsShowToClient"
         android:layout_below="@+id/header_client"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:text="shops will be shown here"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </TextView>
 
     </RelativeLayout>
 
@@ -120,6 +127,12 @@
         android:layout_below="@+id/header_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <TextView
+            android:text="orders will be shown here"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </TextView>
 
     </RelativeLayout>
 
