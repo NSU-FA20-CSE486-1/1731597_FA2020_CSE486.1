@@ -1,8 +1,9 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
-import android.widget.Adapter;
-import android.widget.AdapterViewFlipper;
 import android.widget.Filter;
+
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter.adapterProductClass;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 
 import java.util.ArrayList;
 

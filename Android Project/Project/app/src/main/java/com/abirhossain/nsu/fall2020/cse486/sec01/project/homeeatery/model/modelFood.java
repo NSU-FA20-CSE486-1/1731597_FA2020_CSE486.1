@@ -1,4 +1,4 @@
-package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
+package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model;
 
 public class modelFood {
     private String foodId,foodTitle,foodDescription,foodCategory,foodQuantity,foodIcon,

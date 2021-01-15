@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter.adapterProductClass;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
