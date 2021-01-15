@@ -9,8 +9,8 @@
         android:layout_height="wrap_content">
         <com.blogspot.atifsoftwares.circularimageview.CircularImageView
             android:id="@+id/shopIv"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_marginEnd="5dp"
             app:c_border="true"
             app:c_border_width="2dp"
@@ -23,6 +23,58 @@
             android:layout_height="15dp"
             android:src="@drawable/shape_circle_online_offline"
             />
+        <TextView
+            android:id="@+id/shopStatusTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/nextIconUser"
+            android:text="Restaurant closed"
+            android:textStyle="bold"
+            android:textColor="#F30B0B"
+            />
+        <LinearLayout
+            android:id="@+id/shop_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/shopIv"
+            android:layout_toStartOf="@id/nextIconUser"
+
+            >
+            <TextView
+                android:id="@+id/ShopNameTV"
+                android:text="Shop Name"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/ShopPhoneTV"
+                android:text="Shop Phone"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/ShopAddressTV"
+                android:text="Shop Address"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RatingBar
+                android:id="@+id/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:rating="4.5"
+
+                />
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/nextIconUser"
@@ -34,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-        
+
 
     </RelativeLayout>
 
