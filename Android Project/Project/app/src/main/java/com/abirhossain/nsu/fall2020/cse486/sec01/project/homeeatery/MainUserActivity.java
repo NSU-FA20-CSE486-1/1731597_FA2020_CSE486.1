@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter.AdapterShop;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelShop;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class MainUserActivity extends AppCompatActivity {
 
     private TextView userName,clientEmailTV,ClientPhnTV,availableShopsTV,ClientOrderTV;
@@ -28,6 +32,9 @@ public class MainUserActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private RelativeLayout shopsShowToClient,ordersShowToClient;
     private RecyclerView shopsRV;
+
+    private ArrayList<ModelShop> restaurants;
+    private AdapterShop adapterRestaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +146,8 @@ public class MainUserActivity extends AppCompatActivity {
                             catch (Exception e){
                                 client_image.setImageResource(R.drawable.ic_baseline_person_24);
                             }
+                            //load restaurants based on clients city
+                            loadRestaurants(city);
 
                         }
 
@@ -149,6 +158,41 @@ public class MainUserActivity extends AppCompatActivity {
 
                     }
                 });
+
+    }
+
+    private void loadRestaurants(String ClientCity) {
+        //initializing shop
+        restaurants = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.orderByChild("accountType").equalTo("Seller")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        restaurants.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            ModelShop modelShop = ds.getValue(ModelShop.class);
+                            String restaurantCity = ""+ds.child("city").getValue();
+                            //check if restaurantCity and clientCity matches
+                            if(restaurantCity.equals(ClientCity)){
+                                restaurants.add(modelShop);
+                            }
+                            //for displaying all shops have to  skip if part from above and keep the restaurantLists.add(modelShop)
+                            // restaurantLists.add(modelShop);
+                        }
+                        //adapter setup
+                        adapterRestaurant = new AdapterShop(MainUserActivity.this,restaurants);
+                        shopsRV.setAdapter(adapterRestaurant);
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
     }
 

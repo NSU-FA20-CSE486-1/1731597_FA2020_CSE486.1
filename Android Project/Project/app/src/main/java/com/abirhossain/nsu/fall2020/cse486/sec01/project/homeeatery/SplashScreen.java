@@ -54,27 +54,24 @@ public class SplashScreen extends AppCompatActivity {
     private void UserType() {
         //user is vendor or client
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
+        ref.child(firebaseAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            String accountType=""+ds.child("accountType").getValue();
-                            if(accountType.equals("Seller")){
+                        String accountType=""+snapshot.child("accountType").getValue();
+                        if(accountType.equals("Seller")){
 
-                                //redirect to seller activity
-                                Intent intent = new Intent(SplashScreen.this,MainSellerActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
+                            //redirect to seller activity
+                            Intent intent = new Intent(SplashScreen.this,MainSellerActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
 
-                                //redirect to client activity
-                                Intent intent = new Intent(SplashScreen.this,MainUserActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-
+                            //redirect to client activity
+                            Intent intent = new Intent(SplashScreen.this,MainUserActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
 
