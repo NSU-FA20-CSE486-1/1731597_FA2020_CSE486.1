@@ -36,7 +36,26 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
 
     @Override
     public void onBindViewHolder(@NonNull HolderShop holder, int position) {
-
+        //getting data
+        ModelShop modelShop = shopList.get(position);
+        String accountType =  modelShop.getAccountType();
+        String address =  modelShop.getAddress();
+        String city = modelShop.getCity();
+        String country = modelShop.getCountry();
+        String deliveryFee = modelShop.getDeliveryFee();
+        String email = modelShop.getEmail();
+        String latitude = modelShop.getLatitude();
+        String longitude = modelShop.getLongitude();
+        String online = modelShop.getOnline();
+        String name = modelShop.getName();
+        String phone = modelShop.getPhone();
+        String uid = modelShop.getUid();
+        String timestamp = modelShop.getTimestamp();
+        String shopOpen = modelShop.getShopOpen();
+        String state = modelShop.getState();
+        String profileImage = modelShop.getProfileImage();
+        String shopName = modelShop.getShopName();
+        
     }
 
     @Override
