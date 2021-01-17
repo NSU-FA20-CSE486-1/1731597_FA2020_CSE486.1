@@ -2,6 +2,7 @@ package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.media.Image;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class MainUserActivity extends AppCompatActivity {
 
@@ -25,6 +27,7 @@ public class MainUserActivity extends AppCompatActivity {
     private ImageView logOutBtn,client_image;
     private FirebaseAuth firebaseAuth;
     private RelativeLayout shopsShowToClient,ordersShowToClient;
+    private RecyclerView shopsRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class MainUserActivity extends AppCompatActivity {
         ClientOrderTV = findViewById(R.id.ClientOrderTV);
         shopsShowToClient = findViewById(R.id.shopsShowToClient);
         ordersShowToClient = findViewById(R.id.ordersShowToClient);
+        shopsRV = findViewById(R.id.shopsRV);
+
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -115,10 +120,26 @@ public class MainUserActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //getting user data
                         for (DataSnapshot ds: snapshot.getChildren()){
                             String name = ""+ds.child("name").getValue();
+                            String email = ""+ds.child("email").getValue();
+                            String phone = ""+ds.child("phone").getValue();
+                            String profileImage = ""+ds.child("profileImage").getValue();
                             String accountType = ""+ds.child("accountType").getValue();
+                            String city = ""+ds.child("city").getValue();
+                            //setting user data
                             userName.setText(name+"("+accountType+")");
+                            clientEmailTV.setText(email);
+                            ClientPhnTV.setText(phone);
+                            try {
+                                Picasso.get().load(profileImage).placeholder(R.drawable.ic_baseline_person_24).into(client_image);
+
+                            }
+                            catch (Exception e){
+                                client_image.setImageResource(R.drawable.ic_baseline_person_24);
+                            }
+
                         }
 
                     }
