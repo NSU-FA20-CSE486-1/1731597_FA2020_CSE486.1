@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.R;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelShop;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,7 +56,32 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         String state = modelShop.getState();
         String profileImage = modelShop.getProfileImage();
         String shopName = modelShop.getShopName();
-        
+
+        //setting data
+        holder.ShopNameTV.setText(shopName);
+        holder.ShopPhoneTV.setText(phone);
+        holder.ShopAddressTV.setText(address);
+        //check if online or offline restaurant
+        if (online.equals("true")){
+            holder.online_offline_IV.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.online_offline_IV.setVisibility(View.GONE);
+        }
+        //check if shop is open or not
+        if (shopOpen.equals("true")){
+            holder.shopStatusTV.setVisibility(View.GONE);
+        } else{
+            holder.shopStatusTV.setVisibility(View.VISIBLE);
+        }
+        try {
+            Picasso.get().load(profileImage).placeholder(R.drawable.ic_baseline_home_24).into(holder.shopIv);
+        }
+        catch (Exception e){
+            holder.shopIv.setImageResource(R.drawable.ic_baseline_home_24);
+        }
+
+
     }
 
     @Override
