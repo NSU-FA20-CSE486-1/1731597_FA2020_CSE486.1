@@ -87,6 +87,7 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
             @Override
             public void onClick(View v) {
                 //add to cart
+                showQuantityDialog();
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +99,25 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
         });
 
 
+    }
+
+    private void showQuantityDialog() {
+        //inflate the created layout for add to cart
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_quantity,null);
+        //initialize layout views
+        ImageView foodIcon = view.findViewById(R.id.foodIcon);
+        TextView discountNoteTV = view.findViewById(R.id.discountNoteTV);
+        TextView FoodTitleTV = view.findViewById(R.id.FoodTitleTV);
+        TextView QuantityTV = view.findViewById(R.id.QuantityTV);
+        TextView FoodDescTV = view.findViewById(R.id.FoodDescTV);
+        TextView priceDiscounted = view.findViewById(R.id.priceDiscounted);
+        TextView originalPrice = view.findViewById(R.id.originalPrice);
+        TextView inc_button = view.findViewById(R.id.inc_button);
+        TextView SelectedQuantityTV = view.findViewById(R.id.SelectedQuantityTV);
+        TextView dec_button = view.findViewById(R.id.dec_button);
+        TextView finalPriceTV = view.findViewById(R.id.finalPriceTV);
+        Button addToCartDialogButton = view.findViewById(R.id.addToCartDialogButton);
+        
     }
 
     @Override

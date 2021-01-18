@@ -160,7 +160,7 @@
             />
 
         <Button
-            android:id="@+id/addToCartButton"
+            android:id="@+id/addToCartDialogButton"
             android:layout_below="@+id/finalPriceTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
