@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RestaurantDetailsActivity">
+    tools:context=".RestaurantDetailsActivity"
+    android:background="#EDF8DC"
+    >
     <RelativeLayout
-        android:id="@+id/restaurantDetailsRV"
+        android:id="@+id/restaurantDetailsHeaderRL"
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:background="@color/greenish">
@@ -110,9 +112,56 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"
             />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/foodsRL"
+        android:layout_below="@id/restaurantDetailsHeaderRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/searchFoodsET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:padding="8dp"
+            android:hint="Search Food"
+            android:layout_toStartOf="@+id/filterFoodBtn"
+            android:layout_marginRight="5dp"
+            />
+        <ImageView
+            android:id="@+id/filterFoodBtn"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_search_24"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            />
 
+        <TextView
+            android:id="@+id/filteredFoodTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchFoodsET"
+            android:background="@color/white"
+            android:text="showing all foods"
+            android:textStyle="bold"
+            android:padding="5dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodsShowToSellerRL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/filteredFoodTV"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_food_seller"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
+
 
 
 </RelativeLayout>
