@@ -1,6 +1,7 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,11 +30,28 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
     @NonNull
     @Override
     public HolderFoodUser onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        //inflating layout
+        View view = LayoutInflater.from(context).inflate(R.layout.row_food_user,parent,false);
+        return new HolderFoodUser(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolderFoodUser holder, int position) {
+
+        //getting data
+        modelFood ModelFood = foodList.get(position);
+        String discountAvailable = ModelFood.getDiscountAvailable();
+        String discountNote = ModelFood.getDiscountNote();
+        String discountPrice = ModelFood.getDiscountPrice();
+        String foodCategory = ModelFood.getFoodCategory();
+        String originalPrice = ModelFood.getOriginalPrice();
+        String foodDescription = ModelFood.getFoodDescription();
+        String foodTitle = ModelFood.getFoodTitle();
+        String foodQuantity = ModelFood.getFoodQuantity();
+        String foodId = ModelFood.getFoodId();
+        String timeStamp = ModelFood.getTimestamp();
+        String foodIcon = ModelFood.getFoodIcon();
+
 
     }
 
