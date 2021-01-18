@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/restaurantDetailsHeaderRL"
         android:layout_width="match_parent"
-        android:layout_height="190dp">
+        android:layout_height="220dp">
 
         <ImageView
             android:id="@+id/shopImage"
@@ -75,11 +75,19 @@
             android:id="@+id/callRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/feeTV"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="40dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginRight="20dp"
             android:src="@drawable/ic_baseline_call_24"
+            />
+        <ImageView
+            android:id="@+id/openMapIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_baseline_gps_fixed_24"
+            android:layout_toStartOf="@id/callRestaurant"
             />
         <TextView
             android:id="@+id/ShopPhoneTV"

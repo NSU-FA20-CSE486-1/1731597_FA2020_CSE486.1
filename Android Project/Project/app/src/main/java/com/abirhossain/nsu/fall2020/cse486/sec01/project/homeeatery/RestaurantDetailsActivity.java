@@ -1,10 +1,16 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +32,7 @@ import java.util.ArrayList;
 
 public class RestaurantDetailsActivity extends AppCompatActivity {
 
-    private ImageView shopImage,backBtnShopDetails,callRestaurant,filterFoodBtn,cartIV;
+    private ImageView shopImage,backBtnShopDetails,callRestaurant,filterFoodBtn,cartIV,openMapIV;
     private TextView  ShopNameTV,shopStatusTV,feeTV,ShopEmailTV,ShopPhoneTV,ShopAddressTV,
             filteredFoodTV;
     private EditText searchFoodsET;
@@ -57,6 +63,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         cartIV = findViewById(R.id.cartIV);
         callRestaurant = findViewById(R.id.callRestaurant);
         filterFoodBtn = findViewById(R.id.filterFoodBtn);
+        openMapIV = findViewById(R.id.openMapIV);
 
 
 
@@ -66,6 +73,31 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         loadMyInfo();
         loadRestaurantDetails();
         loadRestaurantFoods();
+        //search foods
+        searchFoodsET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         backBtnShopDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +111,60 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
             }
         });
-        
+        callRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calltoRestaurant();
+            }
+        });
+        openMapIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMap();
+            }
+        });
+        filterFoodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RestaurantDetailsActivity.this);
+                builder.setTitle("Choose food category")
+                        .setItems(Constants.FoodCategory1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //get searched food
+                                String selectedFood = Constants.FoodCategory1[which];
+                                filteredFoodTV.setText(selectedFood);
+                                if (selectedFood.equals("All")){
+                                    //load all foods
+                                    loadRestaurantFoods();
+                                }
+                                else
+                                {
+                                    adapterFoodUser.getFilter().filter(selectedFood);
+                                }
+
+                            }
+                        }).show();
+
+            }
+        });
 
 
 
 
 
+
+    }
+
+    private void openMap() {
+        //saddr= source address
+        String Address = "https://maps.google.com/maps?saddr="+userLatitude+","+userLongitude+"&daddr="+shopLatitude+","+shopLongitude;
+        Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(Address));
+        startActivity(intent);
+    }
+
+    private void calltoRestaurant() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode(shopPhone))));
     }
 
     private void loadMyInfo() {
