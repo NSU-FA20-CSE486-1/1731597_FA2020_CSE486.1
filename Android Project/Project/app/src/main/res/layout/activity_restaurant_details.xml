@@ -119,6 +119,12 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"
             />
+        <ImageView
+            android:id="@+id/cartIV"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_shopping_cart_24"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/foodsRL"
