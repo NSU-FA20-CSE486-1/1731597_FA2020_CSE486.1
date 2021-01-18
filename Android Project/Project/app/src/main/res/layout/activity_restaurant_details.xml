@@ -10,8 +10,15 @@
     <RelativeLayout
         android:id="@+id/restaurantDetailsHeaderRL"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:background="@color/greenish">
+        android:layout_height="190dp">
+
+        <ImageView
+            android:id="@+id/shopImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/greenish"
+            />
         <ImageView
             android:id="@+id/backBtnShopDetails"
             android:layout_width="wrap_content"
@@ -150,7 +157,7 @@
             android:padding="5dp"
             />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/foodsShowToSellerRL"
+            android:id="@+id/foodsShowToClientRL"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/filteredFoodTV"
