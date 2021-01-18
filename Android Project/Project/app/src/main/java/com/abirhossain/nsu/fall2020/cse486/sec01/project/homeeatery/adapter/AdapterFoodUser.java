@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.FilterFoodsUser;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.R;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 import com.squareup.picasso.Picasso;
@@ -18,14 +21,16 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
-public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.HolderFoodUser> {
+public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.HolderFoodUser> implements Filterable {
 
     private Context context;
-    public ArrayList<modelFood> foodList;
+    public ArrayList<modelFood> foodList,filterList;
+    private FilterFoodsUser filter;
 
     public AdapterFoodUser(Context context, ArrayList<modelFood> foodList) {
         this.context = context;
         this.foodList = foodList;
+        this.filterList = foodList;
     }
 
     @NonNull
@@ -98,6 +103,14 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
     @Override
     public int getItemCount() {
         return foodList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter==null){
+            filter= new FilterFoodsUser(this,filterList);
+        }
+        return filter;
     }
 
     class HolderFoodUser extends RecyclerView.ViewHolder{
