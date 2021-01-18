@@ -62,17 +62,8 @@
                 android:textStyle="bold"
                 android:padding="2dp"
                 />
-            <TextView
-                android:id="@+id/FoodQuantityTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add to cart"
-                android:background="@color/black"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:padding="2dp"
-                android:layout_marginTop="20dp"
-                />
+
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,6 +91,18 @@
                     android:textStyle="bold"
                     android:padding="2dp"
                     android:layout_toEndOf="@id/priceDiscounted"
+                    />
+                <Button
+                    android:id="@+id/addToCartButton"
+                    android:layout_below="@+id/priceDiscounted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@color/greenish"
+                    android:backgroundTint="@color/greenish"
+                    android:text="Add to cart"
+                    android:layout_marginTop="10dp"
+
                     />
 
 
