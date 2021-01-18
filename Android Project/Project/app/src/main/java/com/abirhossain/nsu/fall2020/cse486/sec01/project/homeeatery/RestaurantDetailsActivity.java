@@ -1,5 +1,6 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RestaurantDetailsActivity extends AppCompatActivity {
 
@@ -19,7 +25,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
             filteredFoodTV;
     private EditText searchFoodsET;
     private RecyclerView foodsShowToClientRV;
-    private String shopUid;
+    private String shopUid,shopName,shopPhone,shopEmail,shopAddress,shopLatitude,shopLongitude;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -45,10 +51,20 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         shopUid= getIntent().getStringExtra("shopUid");
         firebaseAuth = FirebaseAuth.getInstance();
 
+        loadMyInfo();
+        loadRestaurantDetails();
+        loadRestaurantFoods();
+
         backBtnShopDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+        cartIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -56,6 +72,38 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void loadMyInfo() {
+    }
+
+    private void loadRestaurantDetails() {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(shopUid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot ds) {
+                //getting shop data
+                shopName = ""+ds.child("name").getValue();
+                shopEmail = ""+ds.child("email").getValue();
+                shopPhone = ""+ds.child("phone").getValue();
+                shopLatitude= ""+ds.child("latitude").getValue();
+                shopLongitude = ""+ds.child("longitude").getValue();
+                String deliveryFee = ""+ds.child("deliveryFee").getValue();
+                String profileImage = ""+ds.child("profileImage").getValue();
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        })
+    }
+
+    private void loadRestaurantFoods() {
     }
 
 }
