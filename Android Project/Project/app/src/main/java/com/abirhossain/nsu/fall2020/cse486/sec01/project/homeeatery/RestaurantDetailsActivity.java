@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter.AdapterFoodUser;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelShop;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,9 +31,11 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
             filteredFoodTV;
     private EditText searchFoodsET;
     private RecyclerView foodsShowToClientRV;
-    private String shopUid,shopName,shopPhone,shopEmail,shopAddress,shopLatitude,shopLongitude;
+    private String shopUid,shopName,shopPhone,shopEmail,shopAddress,shopLatitude,shopLongitude
+            ,userLatitude,userLongitude;
     private FirebaseAuth firebaseAuth;
     private ArrayList<modelFood> foodList;
+    private AdapterFoodUser adapterFoodUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,9 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         searchFoodsET = findViewById(R.id.searchFoodsET);
         foodsShowToClientRV = findViewById(R.id.foodsShowToClientRL);
         cartIV = findViewById(R.id.cartIV);
+        callRestaurant = findViewById(R.id.callRestaurant);
+        filterFoodBtn = findViewById(R.id.filterFoodBtn);
+
 
 
         shopUid= getIntent().getStringExtra("shopUid");
@@ -73,6 +79,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
             }
         });
+        
 
 
 
@@ -81,6 +88,32 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
     }
 
     private void loadMyInfo() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //getting user data
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            String name = ""+ds.child("name").getValue();
+                            String email = ""+ds.child("email").getValue();
+                            String phone = ""+ds.child("phone").getValue();
+                            String profileImage = ""+ds.child("profileImage").getValue();
+                            String accountType = ""+ds.child("accountType").getValue();
+                            String city = ""+ds.child("city").getValue();
+                            userLatitude = ""+ds.child("latitude").getValue();
+                            userLongitude = ""+ds.child("longitude").getValue();
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     private void loadRestaurantDetails() {
@@ -95,6 +128,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
                 shopPhone = ""+ds.child("phone").getValue();
                 shopLatitude= ""+ds.child("latitude").getValue();
                 shopLongitude = ""+ds.child("longitude").getValue();
+                shopAddress = ""+ds.child("address").getValue();
                 String deliveryFee = ""+ds.child("deliveryFee").getValue();
                 String profileImage = ""+ds.child("profileImage").getValue();
                 String shopOpen = ""+ds.child("shopOpen").getValue();
@@ -104,7 +138,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
                 ShopEmailTV.setText(shopEmail);
                 ShopPhoneTV.setText(shopPhone);
                 ShopAddressTV.setText(shopAddress);
-                feeTV.setText(deliveryFee);
+                feeTV.setText("Delivery Fee: "+deliveryFee);
                 if (shopOpen.equals("true")){
                     shopStatusTV.setText("Open");
                 }
@@ -130,6 +164,31 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
     }
 
     private void loadRestaurantFoods() {
+        //init list
+        foodList = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(shopUid).child("Foods")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //clear list before adding item
+                        foodList.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            modelFood ModelFood = ds.getValue(modelFood.class);
+                            foodList.add(ModelFood);
+                        }
+                        //adapter setup
+                        adapterFoodUser = new AdapterFoodUser(RestaurantDetailsActivity.this,foodList);
+                        foodsShowToClientRV.setAdapter(adapterFoodUser);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
     }
 
 }
