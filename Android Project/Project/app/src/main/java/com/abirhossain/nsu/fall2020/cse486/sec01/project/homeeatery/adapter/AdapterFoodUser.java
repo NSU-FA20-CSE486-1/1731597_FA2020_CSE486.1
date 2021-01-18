@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.R;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.HolderFoodUser> {
 
     private Context context;
-    private ArrayList<modelFood> foodList;
+    public ArrayList<modelFood> foodList;
 
     public AdapterFoodUser(Context context, ArrayList<modelFood> foodList) {
         this.context = context;
@@ -51,6 +52,45 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
         String foodId = ModelFood.getFoodId();
         String timeStamp = ModelFood.getTimestamp();
         String foodIcon = ModelFood.getFoodIcon();
+
+        //setting data
+        holder.FoodTitleTV.setText(foodTitle);
+        holder.discountNoteTV.setText(discountNote);
+        holder.FoodDescTV.setText(foodDescription);
+        holder.originalPrice.setText("$"+originalPrice);
+        holder.priceDiscounted.setText("$"+discountPrice);
+        if(discountAvailable.equals("true")){
+            //product with discount
+            holder.priceDiscounted.setVisibility(View.VISIBLE);
+            holder.discountNoteTV.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            //product without discount
+            holder.priceDiscounted.setVisibility(View.GONE);
+            holder.discountNoteTV.setVisibility(View.GONE);
+        }
+        try {
+            Picasso.get().load(foodIcon).placeholder(R.drawable.additem_logo).into(holder.foodIcon);
+
+        }
+        catch (Exception e){
+            holder.foodIcon.setImageResource(R.drawable.additem_logo);
+
+        }
+        holder.addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add to cart
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //show food details
+
+            }
+        });
 
 
     }
