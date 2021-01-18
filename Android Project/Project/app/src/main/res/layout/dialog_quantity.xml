@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+
+    >
+    <ImageView
+        android:id="@+id/foodIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="5dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/additem_logo"
+        android:layout_gravity="center"
+        >
+    </ImageView>
+    <TextView
+        android:id="@+id/discountNoteTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15% Off"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:layout_gravity="center"
+
+        />
+    <TextView
+        android:id="@+id/FoodTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Title"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/QuantityTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="quantity"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/FoodDescTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="description"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:layout_gravity="center"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:id="@+id/priceDiscounted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$15"
+            android:background="@color/greenish"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="2dp"
+            android:layout_centerHorizontal="true"
+
+
+            />
+        <TextView
+            android:id="@+id/originalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$20"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="2dp"
+           android:layout_below="@+id/priceDiscounted"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            />
+        <LinearLayout
+            android:id="@+id/incDecLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/originalPrice"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/inc_button"
+                android:layout_below="@id/originalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:layout_marginRight="20dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/SelectedQuantityTV"
+                android:layout_below="@id/originalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/dec_button"
+                android:layout_below="@id/originalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/finalPriceTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total price"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="2dp"
+            android:layout_below="@+id/incDecLL"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+
+            />
+
+        <Button
+            android:id="@+id/addToCartButton"
+            android:layout_below="@+id/finalPriceTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@color/greenish"
+            android:backgroundTint="@color/greenish"
+            android:text="Add to cart"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
+            />
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

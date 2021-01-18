@@ -30,7 +30,7 @@
         android:layout_below="@+id/logInHeaderText"
         android:background="@color/white"
         android:padding="15dp"
-        android:hint="Enter Your Phone Number"
+        android:hint="Enter Your Email"
         />
     <EditText
         android:id="@+id/PassET"
