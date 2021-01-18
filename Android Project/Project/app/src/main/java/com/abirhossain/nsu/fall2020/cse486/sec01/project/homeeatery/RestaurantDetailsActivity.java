@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class RestaurantDetailsActivity extends AppCompatActivity {
 
@@ -91,7 +92,27 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
                 shopLongitude = ""+ds.child("longitude").getValue();
                 String deliveryFee = ""+ds.child("deliveryFee").getValue();
                 String profileImage = ""+ds.child("profileImage").getValue();
+                String shopOpen = ""+ds.child("shopOpen").getValue();
 
+                //set Shop data
+                ShopNameTV.setText(shopName);
+                ShopEmailTV.setText(shopEmail);
+                ShopPhoneTV.setText(shopPhone);
+                ShopAddressTV.setText(shopAddress);
+                feeTV.setText(deliveryFee);
+                if (shopOpen.equals("true")){
+                    shopStatusTV.setText("Open");
+                }
+                else {
+                    shopStatusTV.setText("Closed");
+                }
+                try {
+                    Picasso.get().load(profileImage).placeholder(R.color.greenish).into(shopImage);
+
+                }
+                catch (Exception e){
+                    shopImage.setImageResource(R.color.greenish);
+                }
 
 
             }
@@ -100,7 +121,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
     }
 
     private void loadRestaurantFoods() {
