@@ -1,6 +1,8 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter;
 
+import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,9 +11,37 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.R;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
+
+import java.util.ArrayList;
 
 
-public class AdapterFoodUser {
+public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.HolderFoodUser> {
+
+    private Context context;
+    private ArrayList<modelFood> foodList;
+
+    public AdapterFoodUser(Context context, ArrayList<modelFood> foodList) {
+        this.context = context;
+        this.foodList = foodList;
+    }
+
+    @NonNull
+    @Override
+    public HolderFoodUser onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HolderFoodUser holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return foodList.size();
+    }
+
     class HolderFoodUser extends RecyclerView.ViewHolder{
 
         private ImageView foodIcon;
