@@ -168,7 +168,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/filteredFoodTV"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/row_food_seller"
+            tools:listitem="@layout/row_food_user"
             >
 
         </androidx.recyclerview.widget.RecyclerView>

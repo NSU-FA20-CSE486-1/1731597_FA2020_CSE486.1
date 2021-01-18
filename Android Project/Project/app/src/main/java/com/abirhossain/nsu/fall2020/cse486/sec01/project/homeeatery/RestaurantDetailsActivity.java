@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelShop;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class RestaurantDetailsActivity extends AppCompatActivity {
 
@@ -28,6 +32,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
     private RecyclerView foodsShowToClientRV;
     private String shopUid,shopName,shopPhone,shopEmail,shopAddress,shopLatitude,shopLongitude;
     private FirebaseAuth firebaseAuth;
+    private ArrayList<modelFood> foodList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
