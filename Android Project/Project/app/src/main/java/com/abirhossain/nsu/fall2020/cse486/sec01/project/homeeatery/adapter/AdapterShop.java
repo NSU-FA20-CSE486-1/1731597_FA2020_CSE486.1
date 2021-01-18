@@ -1,6 +1,7 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,14 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         catch (Exception e){
             holder.shopIv.setImageResource(R.drawable.ic_baseline_home_24);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,RestaurantDetailsActivity.class);
+                intent.putExtra("shopUid",uid);
+                context.startActivity(intent);
+            }
+        });
 
 
     }
