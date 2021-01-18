@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.R;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.RestaurantDetailsActivity;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelShop;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 import com.squareup.picasso.Picasso;
@@ -84,7 +85,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,RestaurantDetailsActivity.class);
+                Intent intent = new Intent(context, RestaurantDetailsActivity.class);
                 intent.putExtra("shopUid",uid);
                 context.startActivity(intent);
             }
