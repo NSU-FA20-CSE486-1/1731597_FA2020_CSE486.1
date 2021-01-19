@@ -188,10 +188,26 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
             }
 
         });
-   
+        addToCartDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = FoodTitleTV.getText().toString().trim();
+                String priceEach = originalPrice.getText().toString().trim().replaceAll("$","");
+                String price = finalPriceTV.getText().toString().trim().replaceAll("","");
+                String quantity = SelectedQuantityTV.getText().toString().trim();
+               addToCart(foodID,title,priceEach,price,quantity);
+               dialog.dismiss();
+            }
+        });
 
 
 
+
+    }
+
+    private void addToCart(String foodID, String title, String priceEach, String price, String quantity) {
+
+        
     }
 
     @Override
