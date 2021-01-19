@@ -1,5 +1,6 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,7 +88,7 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
             @Override
             public void onClick(View v) {
                 //add to cart
-                showQuantityDialog();
+                showQuantityDialog(ModelFood);
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +101,10 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
 
 
     }
+    private double cost = 0, costTotal = 0;
+    private int quantity = 0;
 
-    private void showQuantityDialog() {
+    private void showQuantityDialog(modelFood ModelFood) {
         //inflate the created layout for add to cart
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_quantity,null);
         //initialize layout views
@@ -117,7 +120,44 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
         TextView dec_button = view.findViewById(R.id.dec_button);
         TextView finalPriceTV = view.findViewById(R.id.finalPriceTV);
         Button addToCartDialogButton = view.findViewById(R.id.addToCartDialogButton);
-        
+
+        //get data from model
+        String foodID = ModelFood.getFoodId();
+        String title = ModelFood.getFoodTitle();
+        String foodQuantity = ModelFood.getFoodQuantity();
+        String foodDescription = ModelFood.getFoodDescription();
+        String discountNote = ModelFood.getDiscountNote();
+        String image = ModelFood.getFoodIcon();
+        String Price;
+
+        if (ModelFood.getDiscountAvailable().equals("true")){
+            Price = ModelFood.getDiscountPrice();
+            discountNoteTV.setVisibility(View.VISIBLE);
+        }
+        else {
+            discountNoteTV.setVisibility(View.GONE);
+            Price= ModelFood.getOriginalPrice();
+        }
+
+        cost = Double.parseDouble(Price.replaceAll("$",""));
+        costTotal = Double.parseDouble(Price.replaceAll("$",""));
+        quantity = 1;
+
+        //dialog appear
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(view);
+        try {
+            Picasso.get().load(image).placeholder(R.drawable.additem_logo).into(foodIcon);
+
+        }
+        catch (Exception e){
+           foodIcon.setImageResource(R.drawable.additem_logo);
+
+        }
+
+
+
+
     }
 
     @Override
