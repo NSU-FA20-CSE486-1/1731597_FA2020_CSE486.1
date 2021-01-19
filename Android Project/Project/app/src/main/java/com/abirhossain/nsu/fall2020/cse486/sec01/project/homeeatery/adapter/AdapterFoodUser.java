@@ -156,16 +156,39 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
         }
 
         FoodTitleTV.setText(title);
-        QuantityTV.setText(foodQuantity);
+        QuantityTV.setText("Available: "+foodQuantity);
         FoodDescTV.setText(foodDescription);
         discountNoteTV.setText(discountNote);
         SelectedQuantityTV.setText(""+quantity);
-        originalPrice.setText(ModelFood.getOriginalPrice());
-        priceDiscounted.setText(ModelFood.getDiscountPrice());
-        finalPriceTV.setText(""+finalPriceTV);
+        originalPrice.setText("Price: "+ModelFood.getOriginalPrice());
+        priceDiscounted.setText("Discounted price: "+ModelFood.getDiscountPrice());
+        finalPriceTV.setText("Total: "+costTotal+"$");
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        //increment decrement
+        inc_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                costTotal = costTotal + cost;
+                quantity++;
+                finalPriceTV.setText("Total "+costTotal);
+                SelectedQuantityTV.setText(""+quantity);
+            }
+        });
+        dec_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(quantity>1){
+                    costTotal = costTotal - cost;
+                    quantity--;
+                    finalPriceTV.setText("Total "+costTotal);
+                    SelectedQuantityTV.setText(""+quantity);
+                }
+            }
+
+        });
+   
 
 
 
