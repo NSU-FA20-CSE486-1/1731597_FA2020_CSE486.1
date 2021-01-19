@@ -230,10 +230,6 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
                 .doneDataAdding();
         Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
 
-
-
-
-
     }
 
     @Override
