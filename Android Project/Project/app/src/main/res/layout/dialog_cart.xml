@@ -38,7 +38,9 @@
             android:id="@+id/cartItemsRV"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            
+            />
         <RelativeLayout
             android:id="@+id/priceLayout"
             android:layout_width="match_parent"

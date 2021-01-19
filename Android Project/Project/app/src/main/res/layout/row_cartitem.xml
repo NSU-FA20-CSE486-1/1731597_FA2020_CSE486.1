@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    >
+    <TextView
+        android:id="@+id/ItemTitleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Item Title: "
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/ItemPriceTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Item Price: "
+        android:textStyle="bold"
+        android:layout_below="@id/ItemTitleTv"
+        />
+    <LinearLayout
+        android:id="@+id/LLItem"
+        android:layout_below="@+id/ItemPriceTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/ItemPriceEachTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="15/pc"
+            android:textStyle="bold"
+            android:layout_below="@id/ItemTitleTv"
+            />
+        <TextView
+            android:id="@+id/ItemQuantityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="(2)"
+            android:textStyle="bold"
+            android:layout_below="@id/ItemTitleTv"
+            />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/RemoveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove"
+        android:textStyle="bold"
+        android:textColor="#BA0E0E"
+        android:layout_below="@id/ItemPriceTv"
+        android:layout_alignParentEnd="true"
+        />
+    <View
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/greenish"
+        android:layout_below="@+id/LLItem"
+        />
+
+</RelativeLayout>
