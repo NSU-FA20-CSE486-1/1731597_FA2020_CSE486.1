@@ -10,6 +10,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,9 @@ import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelF
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import p32929.androideasysql_library.Column;
+import p32929.androideasysql_library.EasyDB;
 
 
 public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.HolderFoodUser> implements Filterable {
@@ -193,10 +197,11 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
             public void onClick(View v) {
                 String title = FoodTitleTV.getText().toString().trim();
                 String priceEach = originalPrice.getText().toString().trim().replaceAll("$","");
-                String price = finalPriceTV.getText().toString().trim().replaceAll("","");
+                String price = finalPriceTV.getText().toString().trim().replaceAll("$","");
                 String quantity = SelectedQuantityTV.getText().toString().trim();
-               addToCart(foodID,title,priceEach,price,quantity);
-               dialog.dismiss();
+                //add to sqLite database
+                addToCart(foodID,title,priceEach,price,quantity);
+                dialog.dismiss();
             }
         });
 
@@ -204,10 +209,31 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
 
 
     }
-
+    private int itemId = 1;
     private void addToCart(String foodID, String title, String priceEach, String price, String quantity) {
+        itemId++;
+        EasyDB easyDB = EasyDB.init(context,"ITEMS_DB")
+                .setTableName("ITEMS_TABLE")
+                .addColumn(new Column("Item_Id",new String[]{"text","unique"}))
+                .addColumn(new Column("Item_PId",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Name",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Price_Each",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Price",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Quantity",new String[]{"text","not null"}))
+                .doneTableColumn();
+        Boolean b = easyDB.addData("Item_id",itemId)
+                .addData("Item_PId",foodID)
+                .addData("Item_Name",title)
+                .addData("Item_Price_Each",foodID)
+                .addData("Item_Price",price)
+                .addData("Item_Quantity",quantity)
+                .doneDataAdding();
+        Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
 
-        
+
+
+
+
     }
 
     @Override

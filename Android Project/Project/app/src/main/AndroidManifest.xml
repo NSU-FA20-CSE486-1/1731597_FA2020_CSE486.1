@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeEatery">
-        <activity android:name=".RestaurantDetailsActivity"></activity>
+        <activity android:name=".RestaurantDetailsActivity"
+            android:windowSoftInputMode="stateHidden"/> <!--Hiding keyboard by default-->
         <activity android:name=".AddProductActivity" />
         <activity android:name=".MainUserActivity" />
         <activity android:name=".MainSellerActivity" />
