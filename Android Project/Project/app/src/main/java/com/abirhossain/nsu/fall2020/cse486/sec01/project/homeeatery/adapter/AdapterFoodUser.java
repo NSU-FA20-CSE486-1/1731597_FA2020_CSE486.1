@@ -155,6 +155,17 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
 
         }
 
+        FoodTitleTV.setText(title);
+        QuantityTV.setText(foodQuantity);
+        FoodDescTV.setText(foodDescription);
+        discountNoteTV.setText(discountNote);
+        SelectedQuantityTV.setText(""+quantity);
+        originalPrice.setText(ModelFood.getOriginalPrice());
+        priceDiscounted.setText(ModelFood.getDiscountPrice());
+        finalPriceTV.setText(""+finalPriceTV);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
 
 
 
