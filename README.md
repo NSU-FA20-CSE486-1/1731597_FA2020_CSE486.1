@@ -52,7 +52,7 @@
 <h2 id="features">2. Features</h2>
 This project has the following features -
 <!--user regestration-->
-<h3>User Registration:</h3>
+<h3>2.1User Registration:</h3>
   To access any platform users first have to register. Users must include userimage,username, firstname, lastname,email and password, phone number, address.
    <br>
    <br>
@@ -65,7 +65,7 @@ This project has the following features -
  <img width="200" height="420" src="images/sellerSignUp.PNG"><br>
  </p>
 
- <h3>Login :</h3>
+ <h3>2.2 Login :</h3>
   Clients and vendors will have to login by providing their email and password<br>
   <br>
 
@@ -74,7 +74,7 @@ This project has the following features -
  <img width="200" height="420" src="images/login.PNG"><br>
 
 </p>
-<h3>Forgot Password:</h3>
+<h3>2.3 Forgot Password:</h3>
   Clients and vendors will be able to reset their passwords if they forgets their password<br>
   <br>
 
@@ -84,7 +84,7 @@ This project has the following features -
 </p>
 <br>
 <br>
-  <h3>Currently the following functions are available for users -</h3>
+  <h3>2.4 Currently the following functions are available for clients -</h3>
   <p>
     * Clients can see all the restaurants that are nearby them.<br>
       <p align="center">
@@ -92,31 +92,26 @@ This project has the following features -
 </p>
 
 
-    * Clients can enter those restaurants and see the details of those restaurants and the food items that are available there <br>
-        <p align="center">
- <iframe src="https://drive.google.com/file/d/1Wew0I5N_GahzryBaIsoSPrx_YvT5n4RP/preview" width="640" height="480"></iframe>
+* Clients can enter those restaurants and see the details of those restaurants and the food items that are available there <br>
+ <p align="center">
+<img width="200" height="420" src="images/shopDetails.PNG"><br>
 </p>
-
-
-
-    * Clients can search foods by name or by category <br>
-        <p align="center">
-
- <img width="700" height="420" src="images/searchFoodCat.PNG"><br>
+ * Clients can search foods by name or by category <br>
+<p align="center">
+ <img width="200" height="420" src="images/searchFoodName.PNG"><br>
 </p>
-        <p align="center">
- <img width="200" height="420" src="images/searchFoodCatName.PNG"><br>
+ <p align="center">
+ <img width="200" height="420" src="images/searchFoodCat.PNG"><br>
 </p>
-    * Clients can can select those foods and add those foods to their cart</p> 
-
-  <p align="center">
-  <img width="200" height="420" src="images/addToCart.PNG"><br></iframe>
+ * Clients can can select those foods and add those foods to their cart</p> 
+ <p align="center">
+  <img width="200" height="420" src="images/addToCart.PNG"><br>
 </p>  
-<h3>2.3 Admin Panel:</h3>
-There's also a Admin panel from which the admin can delete unwanted users. Assign new admins with filtered permission and monitor activities.
+<h3>2.5 Vendor Side:</h3>
+There is also a vendor side in this app
 <p align="center">
 <img width="200" height="420" src="images/admin.png"><br>
-Figure 4.0
+
 </p>
 
  <h2 id="#technology">3. Technology</h2>
