@@ -57,12 +57,12 @@ This project has the following features -
    <br>
    <br>
  <p align="center">
-  <iframe src="https://drive.google.com/file/d/1kWE0pPlx-K9gZ1cSRCsOGb0ipyi9-Eca/preview" width="640" height="480"></iframe>
+  <img width="700" height="420" src="images/userSignup.PNG"><br>
  </p>
  <!--vendor regestration-->
  If the user is a vendor then he/she have to give some aditional information. Vendor must include delivery fee,shop name. 
   <p align="center">
- <iframe src="https://drive.google.com/file/d/1l75WNlzfPwVyeAzPbn97uK-puXX0QOIS/preview" width="640" height="480"></iframe>
+ <img width="700" height="420" src="images/sellerSignUp.PNG"><br>
  </p>
 
  <h3>Login :</h3>
@@ -71,7 +71,7 @@ This project has the following features -
 
 
   <p align="center">
- <iframe src="https://drive.google.com/file/d/162jivzbmWelFN6dpVEXPiIedm-TYMHt8/preview" width="640" height="480"></iframe>
+ <img width="700" height="420" src="images/login.PNG"><br>
 
 </p>
 <h3>Forgot Password:</h3>
@@ -79,7 +79,7 @@ This project has the following features -
   <br>
 
   <p align="center">
- <iframe src="https://drive.google.com/file/d/11pOOup_fjq9K0b3IWhJX3baTl0CwNRiF/preview" width="640" height="480"></iframe>
+ <img width="700" height="420" src="images/forgotPass.PNG"><br>
 
 </p>
 <br>
@@ -88,7 +88,7 @@ This project has the following features -
   <p>
     * Clients can see all the restaurants that are nearby them.<br>
       <p align="center">
- <iframe src="https://drive.google.com/file/d/1Nm1cqFck_cH9bdunxNJ96GKaHgz8RK1s/preview" width="640" height="480"></iframe>
+ <img width="700" height="420" src="images/clientHomePage.PNG"><br>
 </p>
 
 
@@ -96,10 +96,21 @@ This project has the following features -
         <p align="center">
  <iframe src="https://drive.google.com/file/d/1Wew0I5N_GahzryBaIsoSPrx_YvT5n4RP/preview" width="640" height="480"></iframe>
 </p>
-    * Clients can can select those foods and add those foods to their cart</p> <br><br><br>
+
+
+
+    * Clients can search foods by name or by category <br>
+        <p align="center">
+
+ <img width="700" height="420" src="images/searchFoodCat.PNG"><br>
+</p>
+        <p align="center">
+ <img width="700" height="420" src="images/searchFoodCatName.PNG"><br>
+</p>
+    * Clients can can select those foods and add those foods to their cart</p> 
 
   <p align="center">
- <iframe src="https://drive.google.com/file/d/1shTTDAMsTqKonoqAzaScnlpr3D9uQJA9/preview" width="640" height="480"></iframe>
+  <img width="700" height="420" src="images/addToCart.PNG"><br></iframe>
 </p>  
 <h3>2.3 Admin Panel:</h3>
 There's also a Admin panel from which the admin can delete unwanted users. Assign new admins with filtered permission and monitor activities.
