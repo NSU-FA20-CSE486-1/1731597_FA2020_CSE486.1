@@ -1,6 +1,7 @@
 package com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,17 +26,27 @@ public class AdapterCartItem extends RecyclerView.Adapter<AdapterCartItem.Holder
     @NonNull
     @Override
     public HolderCartItem onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        //inflating row_cartItems.xml layout
+        View view = LayoutInflater.from(context).inflate(R.layout.row_cartitem,parent,false);
+        return new HolderCartItem(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolderCartItem holder, int position) {
+        //get data
+        ModelCartItem modelCartItem = cartItems.get(position);
+        String id = modelCartItem.getId();
+        String pid = modelCartItem.getPid();
+        String title = modelCartItem.getName();
+        String cost = modelCartItem.getCost();
+        String price = modelCartItem.getPrice();
+        String quantity = modelCartItem.getQuantity();
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return cartItems.size();
     }
 
     class HolderCartItem extends RecyclerView.ViewHolder{
