@@ -57,12 +57,12 @@ This project has the following features -
    <br>
    <br>
  <p align="center">
-  <img width="700" height="420" src="images/userSignup.PNG"><br>
+  <img width="200" height="420" src="images/userSignup.PNG"><br>
  </p>
  <!--vendor regestration-->
  If the user is a vendor then he/she have to give some aditional information. Vendor must include delivery fee,shop name. 
   <p align="center">
- <img width="700" height="420" src="images/sellerSignUp.PNG"><br>
+ <img width="200" height="420" src="images/sellerSignUp.PNG"><br>
  </p>
 
  <h3>Login :</h3>
@@ -71,7 +71,7 @@ This project has the following features -
 
 
   <p align="center">
- <img width="700" height="420" src="images/login.PNG"><br>
+ <img width="200" height="420" src="images/login.PNG"><br>
 
 </p>
 <h3>Forgot Password:</h3>
@@ -79,7 +79,7 @@ This project has the following features -
   <br>
 
   <p align="center">
- <img width="700" height="420" src="images/forgotPass.PNG"><br>
+ <img width="200" height="420" src="images/forgotPass.PNG"><br>
 
 </p>
 <br>
@@ -88,7 +88,7 @@ This project has the following features -
   <p>
     * Clients can see all the restaurants that are nearby them.<br>
       <p align="center">
- <img width="700" height="420" src="images/clientHomePage.PNG"><br>
+ <img width="200" height="420" src="images/clientHomePage.PNG"><br>
 </p>
 
 
@@ -105,17 +105,17 @@ This project has the following features -
  <img width="700" height="420" src="images/searchFoodCat.PNG"><br>
 </p>
         <p align="center">
- <img width="700" height="420" src="images/searchFoodCatName.PNG"><br>
+ <img width="200" height="420" src="images/searchFoodCatName.PNG"><br>
 </p>
     * Clients can can select those foods and add those foods to their cart</p> 
 
   <p align="center">
-  <img width="700" height="420" src="images/addToCart.PNG"><br></iframe>
+  <img width="200" height="420" src="images/addToCart.PNG"><br></iframe>
 </p>  
 <h3>2.3 Admin Panel:</h3>
 There's also a Admin panel from which the admin can delete unwanted users. Assign new admins with filtered permission and monitor activities.
 <p align="center">
-<img width="700" height="420" src="images/admin.png"><br>
+<img width="200" height="420" src="images/admin.png"><br>
 Figure 4.0
 </p>
 
