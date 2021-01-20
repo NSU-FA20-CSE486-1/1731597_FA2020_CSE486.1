@@ -52,7 +52,7 @@
 <h2 id="features">2. Features</h2>
 This project has the following features -
 <!--user regestration-->
-<h3>2.1User Registration:</h3>
+<h3>2.1 User Registration:</h3>
   To access any platform users first have to register. Users must include userimage,username, firstname, lastname,email and password, phone number, address.
    <br>
    <br>
@@ -137,6 +137,6 @@ There is also a vendor side in this app<br>
 <p>
 No design pattern was followed for making this app. Firebase database is a noSql database and it stores data in tree format.</p>
 
-<h2>5. Conclusion</h2>
+<h2>5. Roadblocks</h2>
 <p id="#Roadblocks">
-In summary Populace is a web-based software that tries to organize life by bringing several platforms together. In this project we achieved most of the functionalities proposed. Except the Business monetization plan using Google-AdSense. We also didn't implement the function of being able to post to the specific platform in this version of the software. During the development process we faced issues trying to integrate Google-classroom. The method of using the API with Google-Oauth did not work out. As a result we decided to go with the auto-generated credentials file by Google instead of using our own credential file. These maybe a issue when we go live with the site. In future, we plan to implement these missing functionalities,come up with better solution for the implementation and make the platform even better.</p>
+There are some roadblocks i had to face while making this app. First roadblock was google map integration. Google map does not give right location while working in emulator. So all the users and vendors are registering with same location for now. But when in mobile device it gets fixed. Then i faced a problem with resting passwor. Because I made a mistake while checking if its a correct email format. I did not use navigation drawer which i wanted to do. But could not do it becuse android got updated and now navigation activity comes with fragment. In search option i also faced some problem. While i was writing food category names the food was not appearing then i found out that my adapter name was wrong and fixed it. But still it has a problem i could not change the hints of the search as i give input into the search bar. And the last problem i faced today is showing the cart dialog to the client. In the logcat it shows me that i did not set adapter for my cart dialog but in code i did set the adapter. The app is not yet in a complete as i couldn't finish the ordering process. </p>
