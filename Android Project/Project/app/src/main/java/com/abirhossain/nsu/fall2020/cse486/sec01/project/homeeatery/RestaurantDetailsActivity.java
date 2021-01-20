@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,7 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter.AdapterCartItem;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.adapter.AdapterFoodUser;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelCartItem;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelShop;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.modelFood;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +33,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import p32929.androideasysql_library.Column;
+import p32929.androideasysql_library.EasyDB;
 
 public class RestaurantDetailsActivity extends AppCompatActivity {
 
@@ -43,6 +49,10 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ArrayList<modelFood> foodList;
     private AdapterFoodUser adapterFoodUser;
+    //cart
+    private ArrayList<ModelCartItem> cartItemList;
+    private AdapterCartItem adapterCartItem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +174,10 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
     private void showCartDialog() {
 
+        //init array list
+        cartItemList = new ArrayList<>();
+
+
         //inflate cart layout
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_cart,null);
         //init ui
@@ -177,11 +191,42 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         cartItemsRV = findViewById(R.id.cartItemsRV);
         orderNowBtn = findViewById(R.id.orderNowBtn);
 
+        //dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //setting view to dialog
+        builder.setView(view);
+        ShowShopNameTV.setText(shopName);
+        EasyDB easyDB = EasyDB.init(this,"ITEMS_DB")
+                .setTableName("ITEMS_TABLE")
+                .addColumn(new Column("Item_Id",new String[]{"text","unique"}))
+                .addColumn(new Column("Item_PId",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Name",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Price_Each",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Price",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Quantity",new String[]{"text","not null"}))
+                .doneTableColumn();
+        //getting records from db
+        Cursor res = easyDB.getAllData();
+        while (res.moveToNext()){
+            String id = res.getString(1);
+            String pid = res.getString(2);
+            String name = res.getString(3);
+            String price = res.getString(4);
+            String cost = res.getString(5);
+            String quantity = res.getString(6);
 
-
-
-
-
+            allTotalCost = allTotalCost = Double.parseDouble(cost);
+            ModelCartItem modelCartItem = new ModelCartItem(
+                    ""+id,
+                    ""+pid,
+                    ""+name,
+                    ""+price,
+                    ""+cost,
+                    ""+quantity
+            );
+            cartItemList.add(modelCartItem);
+        }
+   
 
     }
 
