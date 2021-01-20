@@ -53,7 +53,7 @@ public class AdapterCartItem extends RecyclerView.Adapter<AdapterCartItem.Holder
         holder.ItemQuantityTV.setText(quantity);
         holder.ItemPriceTv.setText(price);
 
-        //remove click hanlde
+        //remove click handle
 
         holder.RemoveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +103,6 @@ public class AdapterCartItem extends RecyclerView.Adapter<AdapterCartItem.Holder
             ItemPriceEachTV= itemView.findViewById(R.id.ItemPriceEachTV);
             ItemQuantityTV= itemView.findViewById(R.id.ItemQuantityTV);
             RemoveBtn= itemView.findViewById(R.id.RemoveBtn);
-
-
         }
     }
 }

@@ -190,6 +190,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
     public double allTotalCost = 0.0;
     public TextView subTotalTv,dFeeTv,TotalCostTv;
+    public RecyclerView cartItemsRV;
 
     private void showCartDialog() {
 
@@ -201,15 +202,13 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_cart,null);
         //init ui
         TextView ShowShopNameTV, subTotalTextTv;
-        RecyclerView cartItemsRV;
         Button orderNowBtn;
-        ShowShopNameTV = findViewById(R.id.ShowShopNameTV);
-        subTotalTv = findViewById(R.id.subTotalTv);
-        dFeeTv = findViewById(R.id.dFeeTv);
-        TotalCostTv = findViewById(R.id.TotalCostTv);
-        cartItemsRV = findViewById(R.id.cartItemsRV);
-        orderNowBtn = findViewById(R.id.orderNowBtn);
-
+        ShowShopNameTV = view.findViewById(R.id.ShowShopNameTV);
+        subTotalTv = view.findViewById(R.id.subTotalTv);
+        dFeeTv = view.findViewById(R.id.dFeeTv);
+        TotalCostTv = view.findViewById(R.id.TotalCostTv);
+        cartItemsRV = view.findViewById(R.id.ShowCartItemsRV);
+        orderNowBtn = view.findViewById(R.id.orderNowBtn);
         //dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //setting view to dialog
@@ -234,7 +233,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
             String cost = res.getString(5);
             String quantity = res.getString(6);
 
-            allTotalCost = allTotalCost = Double.parseDouble(cost);
+            allTotalCost = allTotalCost+Double.parseDouble(cost);
             ModelCartItem modelCartItem = new ModelCartItem(
                     ""+id,
                     ""+pid,
