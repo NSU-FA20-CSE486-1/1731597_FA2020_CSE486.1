@@ -108,12 +108,26 @@ This project has the following features -
   <img width="200" height="420" src="images/addToCart.PNG"><br>
 </p>  
 <h3>2.5 Vendor Side:</h3>
-There is also a vendor side in this app
+There is also a vendor side in this app<br>
+* Vendors will be able to see all the foods that are available when they logs in
 <p align="center">
-<img width="200" height="420" src="images/admin.png"><br>
-
+<img width="200" height="420" src="images/vendorHome.png"><br>
 </p>
-
+* Vendors will be able to add food items
+<p align="center">
+<img width="200" height="420" src="images/addFood.png"><br>
+</p>
+* Vendors will be search foods by category or name
+<p align="center">
+<img width="200" height="420" src="images/searchVCat.png"><br>
+</p>
+<p align="center">
+<img width="200" height="420" src="images/searchVN.png"><br>
+</p>
+* Vendors will be search remove foods
+<p align="center">
+<img width="200" height="420" src="images/removeFood.png"><br>
+</p>
  <h2 id="#technology">3. Technology</h2>
  <h3>3.1 Proposed Technology Stack: </h3>
  <p>For UI design we decided to use Bootstrap. Bootstrap is a free and open-source CSS framework directed at responsive front-end web development. It contains CSS and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components. Bootstrap will be used over the usual HTML and CSS. And for the backend we will be using Express.js. It is a web application framework. It is a minimal and flexible Node.js web application framework that provides robust set of features.
