@@ -37,7 +37,7 @@
   <a href="#introduction"><li>Introduction</li><br></a>
   <a href="#features"><li>Features</li><br></a>
   <a href="#data"><li>Data Management</li><br></a>
-  <a href="#businessplan"><li>Design Pattern</li></a><br>
+  <a href="#Design"><li>Design Pattern</li></a><br>
   <a href="#conclusion"><li>Roadblocks</li></a><br><hr>
 
 </ol>
@@ -129,37 +129,14 @@ There is also a vendor side in this app<br>
 <img width="200" height="420" src="images/removeFood.PNG"><br>
 </p>
  <h2 id="#data">3.Data Management</h2>
- <p>For Data management i have used both firebase and sqlite. In this app firebase was widely used. This apps login registration is done by firebase authentication. I also used firebase realtime database to keep the user data. And for storing the images i used firebase storage. Sqlite was used to store the cart items that user was storing in his app </p>
-
-<ul>
-    <li> USER: Will keep info about the users signing in the application.<br></li>
-    <li>PLATFORM: The platform information for the signed in USER entity.</li>
-    <li>COURSE_INFO: The name of the course/subject associated with the specific platform</li>
-</ul><br>
-
- <h3>3.2 Implemented Technology Stack: </h3>
- <p>Due to npm api for piazza being old and unusable we have decided to switch our project from node.js to Django.For which our project specification has changed. Django is a high level python-based free and open-source web framework.
-
- For the database requirement we have opted to use a SQL database that comes with Django by default And so we have decided to use sqlite3 for the projects database requirement.</p>
-
-<h5>3.2.1 Design Pattern: </h5>
- <p>By default the Django framework follows the model-view-template pattern which a close immitation of the Model-view-controller. We decided to stay with this MVT pattern</p
+ <p>For Data management i have used both firebase and sqlite. In this app firebase was widely used.Firebase is Google's mobile platform that helps you quickly develop high-quality apps and grow your business. This apps login registration is done by firebase authentication.Realtime Database is Firebase's original database. It's an efficient, low-latency solution for mobile apps that require synced states across clients in realtime. I used firebase realtime database to keep the user data. And for storing the images i used firebase storage.Cloud Storage for Firebase is a powerful, simple, and cost-effective object storage service built for Google scale. Sqlite was used to store the cart items that user was storing in his app </p>
 
 
 
-
-
-<p>To get the data from the other platforms we used the following APIs–
-
-  * [Google Classroom Link](https://developers.google.com/classroom/quickstart/python)
-  * [Piazza Link](https://pypi.org/project/piazza-api/) </p>
-
-
-
-<h2 id="businessplan">4. BusinessPlan/Monetization</h2>
+<h2 id="#Design">4. Design Pattern</h2>
 <p>
-Google AdSense is the easiest way to monetize a website. It is designed for website developers to display photos, videos, texts on their website.  There are different types of ads available in Google AdSense. If our website is Google AdSense approved, Google will post ads on our website. Therefore, we can earn per view. On the other hand, our website can also be used by universities, schools and colleges as a means for them to communicate with their students, so we can make these organizations use our website as their own personal site. It will help the students in their studies. Because they will find Google classroom and piazza in one platform. It will save their time and keep them organized. So we can also approach these educational institutions to adopt our site to their system.</p>
+No design pattern was followed for making this app. Firebase database is a noSql database and it stores data in tree format.</p>
 
 <h2>5. Conclusion</h2>
-<p id="#conclusion">
+<p id="#Roadblocks">
 In summary Populace is a web-based software that tries to organize life by bringing several platforms together. In this project we achieved most of the functionalities proposed. Except the Business monetization plan using Google-AdSense. We also didn't implement the function of being able to post to the specific platform in this version of the software. During the development process we faced issues trying to integrate Google-classroom. The method of using the API with Google-Oauth did not work out. As a result we decided to go with the auto-generated credentials file by Google instead of using our own credential file. These maybe a issue when we go live with the site. In future, we plan to implement these missing functionalities,come up with better solution for the implementation and make the platform even better.</p>
