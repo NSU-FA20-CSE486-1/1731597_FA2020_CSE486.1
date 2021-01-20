@@ -98,8 +98,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-
-
+                    adapterFoodUser.getFilter().filter(s);
                 }
                 catch (Exception e){
                     e.printStackTrace();

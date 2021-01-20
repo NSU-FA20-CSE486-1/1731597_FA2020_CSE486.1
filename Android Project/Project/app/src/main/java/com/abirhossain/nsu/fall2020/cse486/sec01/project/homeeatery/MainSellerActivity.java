@@ -74,6 +74,7 @@ public class MainSellerActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
+                    adapterFoodSeller.getFilter().filter(s);
 
                 }
                 catch (Exception e){
