@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.R;
+import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.RestaurantDetailsActivity;
 import com.abirhossain.nsu.fall2020.cse486.sec01.project.homeeatery.model.ModelCartItem;
 
 import java.util.ArrayList;
@@ -72,6 +73,14 @@ public class AdapterCartItem extends RecyclerView.Adapter<AdapterCartItem.Holder
                 cartItems.remove(position);
                 notifyItemChanged(position);
                 notifyDataSetChanged();
+
+                double tx = Double.parseDouble((((RestaurantDetailsActivity)context).TotalCostTv.getText().toString().trim().replace("$","")));
+                double totalPrice = tx-Double.parseDouble(cost.replace("$",""));
+                double deliveryFee = Double.parseDouble((((RestaurantDetailsActivity)context).deliveryFee.replace("$","")));
+                double sTotalPrice = Double.parseDouble(String.format("$.2f",totalPrice))-Double.parseDouble(String.format("$.2f",deliveryFee));
+                ((RestaurantDetailsActivity)context).allTotalCost = 0.00;
+                ((RestaurantDetailsActivity)context).subTotalTv.setText("$"+String.format("%.2f",sTotalPrice));
+                ((RestaurantDetailsActivity)context).TotalCostTv.setText("$"+String.format("%.2f",Double.parseDouble(String.format("%.2f",totalPrice))));
             }
         });
 

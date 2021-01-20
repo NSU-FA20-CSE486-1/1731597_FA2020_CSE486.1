@@ -46,6 +46,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
     private RecyclerView foodsShowToClientRV;
     private String shopUid,shopName,shopPhone,shopEmail,shopAddress,shopLatitude,shopLongitude
             ,userLatitude,userLongitude;
+    public  String deliveryFee;
     private FirebaseAuth firebaseAuth;
     private ArrayList<modelFood> foodList;
     private AdapterFoodUser adapterFoodUser;
@@ -226,7 +227,24 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
             );
             cartItemList.add(modelCartItem);
         }
-   
+        //setup adapter
+        adapterCartItem = new AdapterCartItem(this,cartItemList);
+        //setting adapter to RV
+        cartItemsRV.setAdapter(adapterCartItem);
+        dFeeTv.setText("$"+deliveryFee);
+        TotalCostTv.setText("$"+String.format("%.2f",allTotalCost));
+        TotalCostTv.setText("$"+(allTotalCost+Double.parseDouble(deliveryFee.replace("$",""))));
+
+        //show dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        //resetting total price on dialog dismiss
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                allTotalCost =0.00;
+            }
+        });
 
     }
 
@@ -283,7 +301,7 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
                 shopLatitude= ""+ds.child("latitude").getValue();
                 shopLongitude = ""+ds.child("longitude").getValue();
                 shopAddress = ""+ds.child("address").getValue();
-                String deliveryFee = ""+ds.child("deliveryFee").getValue();
+                deliveryFee = ""+ds.child("deliveryFee").getValue();
                 String profileImage = ""+ds.child("profileImage").getValue();
                 String shopOpen = ""+ds.child("shopOpen").getValue();
 
