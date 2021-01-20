@@ -39,8 +39,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/row_cartitem"
-            />
+            tools:listitem="@layout/row_cartitem">
+        </androidx.recyclerview.widget.RecyclerView>
         <RelativeLayout
             android:id="@+id/priceLayout"
             android:layout_width="match_parent"

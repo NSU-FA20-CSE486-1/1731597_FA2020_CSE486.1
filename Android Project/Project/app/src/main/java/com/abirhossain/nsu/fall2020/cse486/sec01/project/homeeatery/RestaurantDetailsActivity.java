@@ -85,6 +85,9 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         loadMyInfo();
         loadRestaurantDetails();
         loadRestaurantFoods();
+        //delete cart if new shop selected as different shop have different item
+        deleteCartData();
+
         //search foods
         searchFoodsET.addTextChangedListener(new TextWatcher() {
             @Override
@@ -167,6 +170,21 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+    private void deleteCartData() {
+
+        EasyDB easyDB = EasyDB.init(this,"ITEMS_DB")
+                .setTableName("ITEMS_TABLE")
+                .addColumn(new Column("Item_Id",new String[]{"text","unique"}))
+                .addColumn(new Column("Item_PId",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Name",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Price_Each",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Price",new String[]{"text","not null"}))
+                .addColumn(new Column("Item_Quantity",new String[]{"text","not null"}))
+                .doneTableColumn();
+        easyDB.deleteAllDataFromTable();
 
     }
 

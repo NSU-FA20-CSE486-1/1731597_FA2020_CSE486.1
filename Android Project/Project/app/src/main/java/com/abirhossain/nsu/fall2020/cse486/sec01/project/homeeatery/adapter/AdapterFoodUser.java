@@ -196,11 +196,11 @@ public class AdapterFoodUser extends RecyclerView.Adapter<AdapterFoodUser.Holder
             @Override
             public void onClick(View v) {
                 String title = FoodTitleTV.getText().toString().trim();
-                String priceEach = originalPrice.getText().toString().trim().replaceAll("$","");
-                String price = finalPriceTV.getText().toString().trim().replaceAll("$","");
+                String priceEach = Price;
+                String TotalPrice = finalPriceTV.getText().toString().trim().replaceAll("$","");
                 String quantity = SelectedQuantityTV.getText().toString().trim();
                 //add to sqLite database
-                addToCart(foodID,title,priceEach,price,quantity);
+                addToCart(foodID,title,priceEach,TotalPrice,quantity);
                 dialog.dismiss();
             }
         });
