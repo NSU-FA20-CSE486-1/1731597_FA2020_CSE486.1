@@ -42,6 +42,13 @@ public class AdapterCartItem extends RecyclerView.Adapter<AdapterCartItem.Holder
         String price = modelCartItem.getPrice();
         String quantity = modelCartItem.getQuantity();
 
+        //setData
+        holder.ItemTitleTv.setText(title);
+        holder.ItemPriceEachTV.setText(cost);
+        holder.ItemQuantityTV.setText(quantity);
+        holder.ItemPriceTv.setText(price);
+        
+
     }
 
     @Override
