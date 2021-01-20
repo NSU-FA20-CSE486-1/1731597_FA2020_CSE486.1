@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -108,6 +109,8 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
         cartIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //show cart dialog
+                showCartDialog();
 
             }
         });
@@ -148,6 +151,32 @@ public class RestaurantDetailsActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+
+    }
+
+    public double allTotalCost = 0.0;
+    public TextView subTotalTv,dFeeTv,TotalCostTv;
+
+    private void showCartDialog() {
+
+        //inflate cart layout
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_cart,null);
+        //init ui
+        TextView ShowShopNameTV, subTotalTextTv;
+        RecyclerView cartItemsRV;
+        Button orderNowBtn;
+        ShowShopNameTV = findViewById(R.id.ShowShopNameTV);
+        subTotalTv = findViewById(R.id.subTotalTv);
+        dFeeTv = findViewById(R.id.dFeeTv);
+        TotalCostTv = findViewById(R.id.TotalCostTv);
+        cartItemsRV = findViewById(R.id.cartItemsRV);
+        orderNowBtn = findViewById(R.id.orderNowBtn);
+
 
 
 
